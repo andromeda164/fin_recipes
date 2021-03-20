@@ -39,13 +39,13 @@ def option_price_delta_put_black_scholes(S, K, r, sigma, time):
     return delta
 
 if __name__=="__main__":
-    print 'Test for european Put-Delta. (B&S-Framework)'
+    print('Test for european Put-Delta. (B&S-Framework)')
     S = 100.0
     K = 100.0
     r = 0.1
     time = 0.5
     sigma = 0.3
     value = option_price_delta_put_black_scholes(S, K, r, sigma, time)
-    print 'The delta for the example option is: %6.6f' % value
-    print 'It should be according to DERIVAGEM: -0.366263'
+    print('The delta for the example option is: %6.6f' % value)
+    print('It should be according to DERIVAGEM: -0.366263')
 

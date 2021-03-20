@@ -49,14 +49,14 @@ def option_price_european_put_dividends( \
     return option_price_put_black_scholes(adjusted_S,K,r,sigma,time_to_maturity)
 
 if __name__=="__main__":
-    print 'Test for Black&Scholes with discrete dividends formula'
-    print 'Price for an European Put with dividends.'
-    print
-    print """To adjust the price of an European option for known dividends,
+    print('Test for Black&Scholes with discrete dividends formula')
+    print('Price for an European Put with dividends.')
+    print()
+    print("""To adjust the price of an European option for known dividends,
 we merely subtract the present value of the dividends from the
 current price of the underlying asset in calculating the
-Black Scholes value. """
-    print
+Black Scholes value. """)
+    print()
     S = 100.0
     K = 100.0
     r = 0.10
@@ -69,7 +69,7 @@ Black Scholes value. """
     type = 'put'
     value = option_price_european_put_dividends( \
         S, K, r, sigma, time, dividend_times, dividend_amounts)
-    print 'The result should be according to DERIVAGEM: %6.5f.' % (7.050580433)
-    print 'The theoretical price for a %s %s option with strike %4.2f is: %6.5f' \
-          % (style, type, K, value)
-    print 'OK.'
+    print('The result should be according to DERIVAGEM: %6.5f.' % (7.050580433))
+    print('The theoretical price for a %s %s option with strike %4.2f is: %6.5f' \
+          % (style, type, K, value))
+    print('OK.')

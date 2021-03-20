@@ -95,8 +95,8 @@ class DayCount:
         elif method in ('ISMA_99U', 'ACT/ACTU'):
             self.method = 'ISMA_99U'
         else:
-            raise Exception, 'Day Count Method %s not supported in class DayCount!' \
-                  % (method)
+            raise Exception('Day Count Method %s not supported in class DayCount!' \
+                  % (method))
         pass
 
     def __call__(self):
@@ -122,12 +122,12 @@ def AI_Factor(daycount, D1M1Y1, D2M2Y2, D3M3Y3, F, maturity, coupon = 0.0, non_v
         D2M2Y2 = dates.date('autodetect',D2M2Y2)
         D3M3Y3 = dates.date('autodetect',D3M3Y3)
         maturity = dates.date('autodetect',maturity)
-    except Exception, detail:
-        raise Exception, 'Bad dates furnished in function AI_Factor (%s)!' % detail
+    except Exception(detail):
+        raise Exception('Bad dates furnished in function AI_Factor (%s)!' % detail)
 #    if type(F)!=int:
 #        raise Exception, 'Wrong type for Frequency furnished (must be Integer)!'
     if F<0.0:
-        raise Exception, 'Wrong frequency furnished: %d!' % F
+        raise Exception('Wrong frequency furnished: %d!' % F)
     
     # Day Count Method
     if isinstance(daycount):
@@ -247,7 +247,7 @@ def AI_Factor(daycount, D1M1Y1, D2M2Y2, D3M3Y3, F, maturity, coupon = 0.0, non_v
             D1x = 30
         N = (D2x - D1x) + 30 * (M2 - M1) + 360 * (Y2 - Y1)
     else:
-        raise Exception, 'Unknown Day Count Rule for Interest calculations (%s)!' % str(DCM)
+        raise Exception('Unknown Day Count Rule for Interest calculations (%s)!' % str(DCM))
 
     # Determine Basic Accrued Interest Factor
     if str(DCM) in ['GERMAN', 'SPEC_GERMAN', 'FRENCH', 'US']:
@@ -333,7 +333,7 @@ def AI_Factor(daycount, D1M1Y1, D2M2Y2, D3M3Y3, F, maturity, coupon = 0.0, non_v
             if D3M3Y3==maturity:
                 # RULE 18
                 if DEBUG:
-                    print 'generating notional periods forward...'
+                    print('generating notional periods forward...')
                 Direction = 1 # ... forwards
                 Anchor = D1M1Y1
                 AY = Y1
@@ -342,7 +342,7 @@ def AI_Factor(daycount, D1M1Y1, D2M2Y2, D3M3Y3, F, maturity, coupon = 0.0, non_v
                 Target = D3M3Y3
             else:
                 if DEBUG:
-                    print 'generating notional periods backward...'
+                    print('generating notional periods backward...')
                 Direction = -1 # ... backwards
                 Anchor = D3M3Y3
                 AY = Y3
@@ -367,7 +367,7 @@ def AI_Factor(daycount, D1M1Y1, D2M2Y2, D3M3Y3, F, maturity, coupon = 0.0, non_v
                     # ISMA-99 Ultimo
                     NextC = dates.date('separated',1,WM,WY).ultimo() # RULE 24
                 if DEBUG:
-                    print 'next notional period date: %s' % str(NextC)
+                    print('next notional period date: %s' % str(NextC))
                 Nx = min(D2M2Y2, max(NextC, CurrC)) - max(D1M1Y1, min(CurrC, NextC))
                 Cx = Direction * (NextC - CurrC)
                 if float(Nx) > 0.0: # RULE 22
@@ -405,35 +405,36 @@ if __name__=="__main__":
     #                ai_fraction = ai_fact(method[0],str(start_date),str(settle_date),str(maturity_date), freq,str(maturity_date))
     #                f.write('%d;%d;%s;%s;%s;%f\n' % (method[1], freq, str(start_date), str(settle_date), str(maturity_date), ai_fraction))
     #f.close()
-    print 'Unit test Day count rules'
-    print 'Examples FA for testing:'
-    print 'Old Eurobonds convention (30/360E)'
+    #freq = 2 was not defined here yet, see code above
+    print('Unit test Day count rules')
+    print('Examples FA for testing:')
+    print('Old Eurobonds convention (30/360E)')
     startdate = dates.date('separated',11,1,2000)
     enddate = dates.date('separated',31,3,2000)
     ai = AI_Factor('30/360E',str(startdate),str(enddate),str(enddate), freq,str(enddate))
-    print '30/360E: %s to %s: %6.6f, should be %6.6f.' \
-          % (startdate, enddate, ai, 79.0 / 360.0)
+    print('30/360E: %s to %s: %6.6f, should be %6.6f.' \
+          % (startdate, enddate, ai, 79.0 / 360.0))
     startdate = dates.date('separated',11,1,2001)
     enddate = dates.date('separated',31,3,2001)
     ai = AI_Factor('30/360E',str(startdate),str(enddate),str(enddate), freq,str(enddate))
-    print '30/360E: %s to %s: %6.6f, should be %6.6f.' \
-          % (startdate, enddate, ai, 79.0 / 360.0)
-    print 'OK'
-    print
+    print('30/360E: %s to %s: %6.6f, should be %6.6f.' \
+          % (startdate, enddate, ai, 79.0 / 360.0))
+    print('OK')
+    print()
 
-    print 'Example of US Treasury Bond:'
+    print('Example of US Treasury Bond:')
     freq = 2
     startdate = dates.date('separated',7,7,1997)
     settledate = dates.date('separated',30,8,1997)
     enddate = dates.date('separated',15,1,1998)
     maturitydate = dates.date('separated',15,7,2005)
     ai = AI_Factor('Act/ActISMA',str(startdate),str(settledate),str(enddate),freq,str(maturitydate))
-    print 'Act/ActISMA: %s to %s: %6.6f, should be %6.6f.' \
-          % (startdate, settledate, ai, 8.0/362.0 + 46.0/368.0)
-    print 'OK'
-    print
+    print('Act/ActISMA: %s to %s: %6.6f, should be %6.6f.' \
+          % (startdate, settledate, ai, 8.0/362.0 + 46.0/368.0))
+    print('OK')
+    print()
 
-    print 'Examples from the book of R. Steiner "Mastering Financial calculations"'
+    print('Examples from the book of R. Steiner "Mastering Financial calculations"')
     freq = 2
     startdate = dates.date('separated',15,1,1999)
     enddate = dates.date('separated',15,7,1999)
@@ -441,139 +442,139 @@ if __name__=="__main__":
 
     settledate = dates.date('separated',30,3,1999)
     ai = AI_Factor('ISMA_99N',str(startdate),str(settledate),str(enddate),freq,str(maturitydate))
-    print 'ISMA_99N: %s to %s: %6.8f, should be %6.8f.' \
-          % (startdate, settledate, ai, 74.0/362.0)
+    print('ISMA_99N: %s to %s: %6.8f, should be %6.8f.' \
+          % (startdate, settledate, ai, 74.0/362.0))
     ai = AI_Factor('ACT/365L',str(startdate),str(settledate),str(enddate),freq,str(maturitydate))
-    print 'ACT/365L: %s to %s: %6.8f, should be %6.8f.' \
-          % (startdate, settledate, ai, 74.0/365.0)
+    print('ACT/365L: %s to %s: %6.8f, should be %6.8f.' \
+          % (startdate, settledate, ai, 74.0/365.0))
     ai = AI_Factor('ACT/360',str(startdate),str(settledate),str(enddate),freq,str(maturitydate))
-    print 'ACT/360:  %s to %s: %6.8f, should be %6.8f.' \
-          % (startdate, settledate, ai, 74.0/360.0)
+    print('ACT/360:  %s to %s: %6.8f, should be %6.8f.' \
+          % (startdate, settledate, ai, 74.0/360.0))
     ai = AI_Factor('30S/360',str(startdate),str(settledate),str(enddate),freq,str(maturitydate))
-    print '30S/360:  %s to %s: %6.8f, should be %6.8f.' \
-          % (startdate, settledate, ai, 75.0/360.0)
+    print('30S/360:  %s to %s: %6.8f, should be %6.8f.' \
+          % (startdate, settledate, ai, 75.0/360.0))
     ai = AI_Factor('30U/360',str(startdate),str(settledate),str(enddate),freq,str(maturitydate))
-    print '30U/360:  %s to %s: %6.8f, should be %6.8f.' \
-          % (startdate, settledate, ai, 75.0/360.0)
+    print('30U/360:  %s to %s: %6.8f, should be %6.8f.' \
+          % (startdate, settledate, ai, 75.0/360.0))
     
     settledate = dates.date('separated',31,3,1999)
     ai = AI_Factor('ISMA_99N',str(startdate),str(settledate),str(enddate),freq,str(maturitydate))
-    print 'ISMA_99N: %s to %s: %6.8f, should be %6.8f.' \
-          % (startdate, settledate, ai, 75.0/362.0)
+    print('ISMA_99N: %s to %s: %6.8f, should be %6.8f.' \
+          % (startdate, settledate, ai, 75.0/362.0))
     ai = AI_Factor('ACT/365L',str(startdate),str(settledate),str(enddate),freq,str(maturitydate))
-    print 'ACT/365L: %s to %s: %6.8f, should be %6.8f.' \
-          % (startdate, settledate, ai, 75.0/365.0)
+    print('ACT/365L: %s to %s: %6.8f, should be %6.8f.' \
+          % (startdate, settledate, ai, 75.0/365.0))
     ai = AI_Factor('ACT/360',str(startdate),str(settledate),str(enddate),freq,str(maturitydate))
-    print 'ACT/360:  %s to %s: %6.8f, should be %6.8f.' \
-          % (startdate, settledate, ai, 75.0/360.0)
+    print('ACT/360:  %s to %s: %6.8f, should be %6.8f.' \
+          % (startdate, settledate, ai, 75.0/360.0))
     ai = AI_Factor('30S/360',str(startdate),str(settledate),str(enddate),freq,str(maturitydate))
-    print '30S/360:  %s to %s: %6.8f, should be %6.8f.' \
-          % (startdate, settledate, ai, 75.0/360.0)
+    print('30S/360:  %s to %s: %6.8f, should be %6.8f.' \
+          % (startdate, settledate, ai, 75.0/360.0))
     ai = AI_Factor('30U/360',str(startdate),str(settledate),str(enddate),freq,str(maturitydate))
-    print '30U/360:  %s to %s: %6.8f, should be %6.8f.' \
-          % (startdate, settledate, ai, 76.0/360.0)
+    print('30U/360:  %s to %s: %6.8f, should be %6.8f.' \
+          % (startdate, settledate, ai, 76.0/360.0))
 
-    settledate = dates.date('separated',01,4,1999)
+    settledate = dates.date('separated',1,4,1999)
     ai = AI_Factor('ISMA_99N',str(startdate),str(settledate),str(enddate),freq,str(maturitydate))
-    print 'ISMA_99N: %s to %s: %6.8f, should be %6.8f.' \
-          % (startdate, settledate, ai, 76.0/362.0)
+    print('ISMA_99N: %s to %s: %6.8f, should be %6.8f.' \
+          % (startdate, settledate, ai, 76.0/362.0))
     ai = AI_Factor('ACT/365L',str(startdate),str(settledate),str(enddate),freq,str(maturitydate))
-    print 'ACT/365L: %s to %s: %6.8f, should be %6.8f.' \
-          % (startdate, settledate, ai, 76.0/365.0)
+    print('ACT/365L: %s to %s: %6.8f, should be %6.8f.' \
+          % (startdate, settledate, ai, 76.0/365.0))
     ai = AI_Factor('ACT/360',str(startdate),str(settledate),str(enddate),freq,str(maturitydate))
-    print 'ACT/360:  %s to %s: %6.8f, should be %6.8f.' \
-          % (startdate, settledate, ai, 76.0/360.0)
+    print('ACT/360:  %s to %s: %6.8f, should be %6.8f.' \
+          % (startdate, settledate, ai, 76.0/360.0))
     ai = AI_Factor('30S/360',str(startdate),str(settledate),str(enddate),freq,str(maturitydate))
-    print '30S/360:  %s to %s: %6.8f, should be %6.8f.' \
-          % (startdate, settledate, ai, 76.0/360.0)
+    print('30S/360:  %s to %s: %6.8f, should be %6.8f.' \
+          % (startdate, settledate, ai, 76.0/360.0))
     ai = AI_Factor('30U/360',str(startdate),str(settledate),str(enddate),freq,str(maturitydate))
-    print '30U/360:  %s to %s: %6.8f, should be %6.8f.' \
-          % (startdate, settledate, ai, 76.0/360.0)
-    print 'OK.'
-    print
+    print('30U/360:  %s to %s: %6.8f, should be %6.8f.' \
+          % (startdate, settledate, ai, 76.0/360.0))
+    print('OK.')
+    print()
 
-    print 'SWX ISMA examples:'
-    print 'Example SWX ISMA-99 A.2 Fig.1'
+    print('SWX ISMA examples:')
+    print('Example SWX ISMA-99 A.2 Fig.1')
     freq = 2
     startdate = dates.date('separated',22,10,1996)
     settledate = dates.date('separated',15,1,1997)
     enddate = dates.date('separated',22,4,1997)
     maturitydate = dates.date('separated',22,10,1997)
     ai = AI_Factor('ISMA_99N',str(startdate),str(settledate),str(enddate),freq,str(maturitydate),2.75)
-    print 'ISMA_99N: %s to %s: %6.6f, should be %6.6f.' \
-          % (startdate, settledate, ai, 85.0/182.0/freq*2.75)
-    print 'Example SWX ISMA-99 A.2 Fig.2'
+    print('ISMA_99N: %s to %s: %6.6f, should be %6.6f.' \
+          % (startdate, settledate, ai, 85.0/182.0/freq*2.75))
+    print('Example SWX ISMA-99 A.2 Fig.2')
     freq = 2
     startdate = dates.date('separated',15,8,1995)
     settledate = dates.date('separated',15,3,1996)
     enddate = dates.date('separated',15,7,1996)
     maturitydate = dates.date('separated',15,1,1997)
     ai = AI_Factor('ISMA_99N',str(startdate),str(settledate),str(enddate),freq,str(maturitydate),4.0)
-    print 'ISMA_99N: %s to %s: %6.6f, should be %6.6f.' \
-          % (startdate, settledate, ai, (153.0/184.0+60.0/182.0)/freq*4.0)
-    print 'Example SWX ISMA-99 A.2 Fig.3'
+    print('ISMA_99N: %s to %s: %6.6f, should be %6.6f.' \
+          % (startdate, settledate, ai, (153.0/184.0+60.0/182.0)/freq*4.0))
+    print('Example SWX ISMA-99 A.2 Fig.3')
     freq = 1
     startdate = dates.date('separated',1,2,1999)
     settledate = dates.date('separated',5,5,1999)
     enddate = dates.date('separated',1,7,1999)
     maturitydate = dates.date('separated',1,7,2000)
     ai = AI_Factor('ISMA_99N',str(startdate),str(settledate),str(enddate),freq,str(maturitydate),8.0)
-    print 'ISMA_99N: %s to %s: %6.6f, should be %6.6f.' \
-          % (startdate, settledate, ai, (93.0/365.0)/freq*8.0)
-    print 'Example SWX ISMA-99 A.2 Fig.4'
+    print('ISMA_99N: %s to %s: %6.6f, should be %6.6f.' \
+          % (startdate, settledate, ai, (93.0/365.0)/freq*8.0))
+    print('Example SWX ISMA-99 A.2 Fig.4')
     freq = 4
     startdate = dates.date('separated',30,11,1999)
     settledate = dates.date('separated',3,4,2000)
     enddate = dates.date('separated',30,4,2000)
     maturitydate = dates.date('separated',30,4,2000)
     ai = AI_Factor('ISMA_99U',str(startdate),str(settledate),str(enddate),freq,str(maturitydate),5.0)
-    print 'ISMA_99U: %s to %s: %6.6f, should be %6.6f.' \
-          % (startdate, settledate, ai, (91.0/91.0+34.0/92.0)/freq*5.0)
-    print 'Example SWX ISMA-99 A.2 Fig.5'
+    print('ISMA_99U: %s to %s: %6.6f, should be %6.6f.' \
+          % (startdate, settledate, ai, (91.0/91.0+34.0/92.0)/freq*5.0))
+    print('Example SWX ISMA-99 A.2 Fig.5')
     freq = 2
     startdate = dates.date('separated',30,1,2000)
     settledate = dates.date('separated',15,5,2000)
     enddate = dates.date('separated',30,6,2000)
     maturitydate = dates.date('separated',30,6,2000)
     ai = AI_Factor('ISMA_99N',str(startdate),str(settledate),str(enddate),freq,str(maturitydate),6.0)
-    print 'ISMA_99N: %s to %s: %6.6f, should be %6.6f.' \
-          % (startdate, settledate, ai, (106.0/182.0)/freq*6.0)
-    print 'Example SWX ISMA-99 A.2 Fig.6'
+    print('ISMA_99N: %s to %s: %6.6f, should be %6.6f.' \
+          % (startdate, settledate, ai, (106.0/182.0)/freq*6.0))
+    print('Example SWX ISMA-99 A.2 Fig.6')
     freq = 0.5
     startdate = dates.date('separated',28,2,2003)
     settledate = dates.date('separated',15,7,2004)
     enddate = dates.date('separated',28,2,2005)
     maturitydate = dates.date('separated',28,2,2005)
     ai = AI_Factor('ISMA_99U',str(startdate),str(settledate),str(enddate),freq,str(maturitydate),6.75)
-    print 'ISMA_99U: %s to %s: %6.6f, should be %6.6f.' \
-          % (startdate, settledate, ai, (1.0+137.0/365.0)*6.75)
-    print 'OK.'
-    print
+    print('ISMA_99U: %s to %s: %6.6f, should be %6.6f.' \
+          % (startdate, settledate, ai, (1.0+137.0/365.0)*6.75))
+    print('OK.')
+    print()
     
-    print 'Example of a Swap (split 365/366 ACT/ACT):'
+    print('Example of a Swap (split 365/366 ACT/ACT):')
     freq = 1
     startdate = dates.date('separated',15,10,1999)
     settledate = dates.date('separated',15,10,2000)
     enddate = dates.date('separated',15,10,2000)
     maturitydate = dates.date('separated',15,10,2005)
     ai = AI_Factor('ACT/365L',str(startdate),str(settledate),str(enddate),freq,str(maturitydate))
-    print 'ACT/365L: %s to %s: %6.6f, should be %6.6f.' \
-          % (startdate, settledate, ai, 78.0/365.0 + 288.0/366.0)
-    print 'NOT OK this example!'
-    print
+    print('ACT/365L: %s to %s: %6.6f, should be %6.6f.' \
+          % (startdate, settledate, ai, 78.0/365.0 + 288.0/366.0))
+    print('NOT OK this example!')
+    print()
 
-    print 'Old Swiss Convention (30/360):'
+    print('Old Swiss Convention (30/360):')
     freq = 1
     startdate = dates.date('separated',11,1,2000)
     enddate = dates.date('separated',31,3,2000)
     ai = AI_Factor('30/360',str(startdate),str(enddate),str(enddate), freq,str(enddate))
-    print '30/360: %s to %s: %6.6f, FA: %6.6f.' \
-          % (startdate, enddate, ai, 80.0 / 360.0)
+    print('30/360: %s to %s: %6.6f, FA: %6.6f.' \
+          % (startdate, enddate, ai, 80.0 / 360.0))
     startdate = dates.date('separated',11,1,2001)
     enddate = dates.date('separated',31,3,2001)
     ai = AI_Factor('30/360',str(startdate),str(enddate),str(enddate), freq,str(enddate))
-    print '30/360: %s to %s: %6.6f, FA: %6.6f.' \
-          % (startdate, enddate, ai, 80.0 / 360.0)
-    print '30/360 is NOT the same for SWX and FA!'
-    print
+    print('30/360: %s to %s: %6.6f, FA: %6.6f.' \
+          % (startdate, enddate, ai, 80.0 / 360.0))
+    print('30/360 is NOT the same for SWX and FA!')
+    print()
 

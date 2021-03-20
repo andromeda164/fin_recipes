@@ -10,6 +10,9 @@
 # Compiled python files
 *.pyc
 
+# 2to3 conversion backup files
+*.bak
+
 # documentation
 *.pdf
 *.doc

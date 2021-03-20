@@ -83,9 +83,9 @@ class date:
             self.day_   = int(rest[0][3:5])
             try:
                 self.datum = datetime.date(self.year_, self.month_, self.day_)
-            except Exception, detail:
-                raise Exception, 'Exception happened in dates.date (US): %s\nValues: day %d, month %d, year %d' \
-                      % (detail, self.day_, self.month_, self.year_)
+            except Exception as detail:
+                raise Exception('Exception happened in dates.date (US): %s\nValues: day %d, month %d, year %d' \
+                      % (detail, self.day_, self.month_, self.year_))
             if len(rest)>1:
                 self.ultimo_ = rest[1]
             else:
@@ -111,15 +111,15 @@ class date:
                 self.day_   = int(str(rest[0])[6:8])
             try:
                 self.datum = datetime.date(self.year_, self.month_, self.day_)
-            except Exception, detail:
-                raise Exception, 'Exception happened in dates.date (USserial): %s\nValues: day %d, month %d, year %d' \
-                      % (detail, self.day_, self.month_, self.year_)
+            except Exception as detail:
+                raise Exception('Exception happened in dates.date (USserial): %s\nValues: day %d, month %d, year %d' \
+                      % (detail, self.day_, self.month_, self.year_))
             if len(rest)>1:
                 self.ultimo_ = rest[1]
             else:
                 self.ultimo_ = False
             if DEBUG:
-                print 'USserial date: ', str(rest[0]), str(self.datum)
+                print('USserial date: ', str(rest[0]), str(self.datum))
         elif mode=='EU':
             # Format: dd.mm.yyyy
             # Separator: Laenge: 1 Buchstabe,
@@ -129,9 +129,9 @@ class date:
             self.day_   = int(rest[0][0:2])
             try:
                 self.datum = datetime.date(self.year_, self.month_, self.day_)
-            except Exception, detail:
-                raise Exception, 'Exception happened in dates.date (EU): %s\nValues: day %d, month %d, year %d' \
-                      % (detail, self.day_, self.month_, self.year_)
+            except Exception as detail:
+                raise Exception('Exception happened in dates.date (EU): %s\nValues: day %d, month %d, year %d' \
+                      % (detail, self.day_, self.month_, self.year_))
             if len(rest)>1:
                 self.ultimo_ = rest[1]
             else:
@@ -154,19 +154,19 @@ class date:
                 self.year_ = y
             try:
                 self.datum = datetime.date(self.year_, self.month_, self.day_)
-            except Exception, detail:
-                raise Exception, 'Exception happened in dates.date (separated): %s\nValues: day %d, month %d, year %d' \
-                      % (detail, self.day_, self.month_, self.year_)
+            except Exception as detail:
+                raise Exception('Exception happened in dates.date (separated): %s\nValues: day %d, month %d, year %d' \
+                      % (detail, self.day_, self.month_, self.year_))
             if len(rest)>4:
                 self.ultimo_ = rest[1]
             else:
                 self.ultimo_ = False
             if DEBUG:
-                print 'separated date: ', str(rest), str(self.datum)
+                print('separated date: ', str(rest), str(self.datum))
         elif mode=='PythonDate':
             data = rest[0]
             if not isinstance(data,datetime.date):
-                raise Exception, 'Invalid date furnished in section PythonDate (%s)!' % str(data)
+                raise Exception('Invalid date furnished in section PythonDate (%s)!' % str(data))
             self.datum = data
             self.year_ = data.year
             self.month_ = data.month
@@ -176,20 +176,20 @@ class date:
             else:
                 self.ultimo_ = False
             if DEBUG:
-                print 'Python date: ', str(rest), str(self.datum)
+                print('Python date: ', str(rest), str(self.datum))
         elif mode=='autodetect':
             data = rest[0]
             if type(data)!=type(''):
                 if not isinstance(data, date):
                     if not isinstance(data,datetime.date):
-                        raise Exception, 'Only strings/python dates allowed for option autodetect!'
+                        raise Exception('Only strings/python dates allowed for option autodetect!')
             if isinstance(data, date):
                 self.datum = data.datum
                 self.year_ = data.year()
                 self.month_ = data.month()
                 self.day_ = data.day()
                 if DEBUG:
-                    print 'autodetect date: ', str(rest), str(self.datum)
+                    print('autodetect date: ', str(rest), str(self.datum))
             elif type(data)==type(datetime.date):
                 self.datum = data
                 self.year_ = data.year
@@ -205,10 +205,10 @@ class date:
                         date_separator = data[c]
                         separator_position.append(c)
                 if DEBUG:
-                    print 'Separator %s positions: %s' \
-                          % (date_separator, str(separator_position))
+                    print('Separator %s positions: %s' \
+                          % (date_separator, str(separator_position)))
                 if len(separator_position)!=2:
-                    raise Exception, 'Unknown autodetect date format %s!' % data
+                    raise Exception('Unknown autodetect date format %s!' % data)
                 if separator_position[0]==4 and separator_position[1]==7 and \
                    date_separator=='-':
                     # US date format '2004-01-12'
@@ -228,23 +228,23 @@ class date:
                     self.month_ = int(data[0:2])
                     self.day_ = int(data[3:5])
                 else:
-                    raise Exception, 'Unknown autodetect date format %s!' % data
+                    raise Exception('Unknown autodetect date format %s!' % data)
                 try:
                     self.datum = datetime.date(self.year_, self.month_, self.day_)
-                except Exception, detail:
-                    raise Exception, 'Exception happened in dates.date (EU): %s\nValues: day %d, month %d, year %d' \
-                          % (detail, self.day_, self.month_, self.year_)
+                except Exception as detail:
+                    raise Exception('Exception happened in dates.date (EU): %s\nValues: day %d, month %d, year %d' \
+                          % (detail, self.day_, self.month_, self.year_))
             if len(rest)>1:
                 self.ultimo_ = rest[1]
             else:
                 self.ultimo_ = False
             if DEBUG:
-                print 'autodetect date: ', str(rest), str(self.datum)
+                print('autodetect date: ', str(rest), str(self.datum))
         else:
-            raise Exception, 'Unknown date construction format %s!' \
-                  % (mode)
+            raise Exception('Unknown date construction format %s!' \
+                  % (mode))
         if not self.valid():
-            raise Exception, 'Invalid date furnished (%s)!' % (str(rest))
+            raise Exception('Invalid date furnished (%s)!' % (str(rest)))
         pass
 
     def valid(self):
@@ -405,14 +405,14 @@ class date:
             return day + self.separator + month \
                    + self.separator + str(self.year_)
         else:
-            raise Exception, 'Invalid date (%s)!' % (str(self.int_date()))
+            raise Exception('Invalid date (%s)!' % (str(self.int_date())))
 
     def __repr__(self):
         if self.valid():
             return str(self.day_) + self.separator + str(self.month_) \
                    + self.separator + str(self.year_)
         else:
-            raise Exception, 'Invalid date (%s)!' % (str(self.int_date()))
+            raise Exception('Invalid date (%s)!' % (str(self.int_date())))
 
     def __add__(self, other):
         if type(other)==int:
@@ -421,7 +421,7 @@ class date:
             newDate = date('PythonDate',data)
             return newDate
         else:
-            raise Exception, 'Error in numeric date operation (add)!'
+            raise Exception('Error in numeric date operation (add)!')
         pass
             
     def __iadd__(self, other):
@@ -433,13 +433,13 @@ class date:
             self.day_ = self.datum.day
             return self
         else:
-            raise Exception, 'Error in numeric date operation (iadd)!'
+            raise Exception('Error in numeric date operation (iadd)!')
         pass
             
     def __sub__(self, other):
         if type(other)==int:
             if DEBUG:
-                print 'I am subtracting from date %s %d days' % (str(self), other)
+                print('I am subtracting from date %s %d days' % (str(self), other))
             diff = datetime.timedelta(days=-other)
             data = self.datum + diff
             newDate = date('PythonDate',data)
@@ -447,11 +447,11 @@ class date:
         else:
             try:
                 if DEBUG:
-                    print 'I am subtracting from date %s the date %s' % (str(self), str(other))
+                    print('I am subtracting from date %s the date %s' % (str(self), str(other)))
                 diff = self.datum - other.datum
                 return diff.days
-            except Exception, detail:
-                raise Exception, 'Error in numeric date operation (sub): %s!' % detail
+            except Exception as detail:
+                raise Exception('Error in numeric date operation (sub): %s!' % detail)
         pass
 
     def __isub__(self, other):
@@ -463,7 +463,7 @@ class date:
             self.day_ = self.datum.day
             return self
         else:
-            raise Exception, 'Error in numeric date operation (isub)!'
+            raise Exception('Error in numeric date operation (isub)!')
         pass
 
     def add_months(self, months):
@@ -504,7 +504,7 @@ class date:
                 newDate = date('separated', 1, m, y) - 1
             return newDate
         else:
-            raise Exception, 'Error in numeric date operation (add_months)!'
+            raise Exception('Error in numeric date operation (add_months)!')
         pass
 
 
@@ -513,21 +513,21 @@ def invalid_date(dd, mm, yyyy):
     """ Gibt True fuer ein ungueltiges Datum zurueck. """
     try:
         if DEBUG:
-            print 'Verification of date %d.%d.%d.' % (dd,mm,yyyy)
+            print('Verification of date %d.%d.%d.' % (dd,mm,yyyy))
         d = date('separated',dd,mm,yyyy)
         if DEBUG:
-            print 'Verification successful. Valid date!'
+            print('Verification successful. Valid date!')
         return False
     except:
         if DEBUG:
-            print 'Verification failed. Invalid date!'
+            print('Verification failed. Invalid date!')
         return True
 
 
 
 if __name__ == "__main__":
     # Unittesting
-    print 'Unittesting - strong test over 30 years'
+    print('Unittesting - strong test over 30 years')
 
     import unittest
     import sys
@@ -596,7 +596,7 @@ if __name__ == "__main__":
         def testMalformedConstructor(self):
             """testMalformedConstructor tests wether the different formats are correctly signalled during construction."""
             date_list = []
-            date_list.append((('separated',[29,02,2005]),"date('separated',29,02,2005)"))
+            date_list.append((('separated',[29,2,2005]),"date('separated',29,2,2005)"))
             date_list.append((('USserial',[20051299]),"date('USserial',20051299)"))
             date_list.append((('autodetect',['29.02.2005']),"date('autodetect','29.02.2005')"))
             date_list.append((('autodetect',['13/22/2005']),"date('autodetect','13/22/2005')"))
@@ -785,6 +785,6 @@ if __name__ == "__main__":
 
     result = unittest.TextTestRunner(stream=sys.stdout, verbosity=2).run(suite)
     if result.wasSuccessful():
-        print 'Unittest properly executed with %d tests, %d failed.' % (result.testsRun, len(result.failures))
+        print('Unittest properly executed with %d tests, %d failed.' % (result.testsRun, len(result.failures)))
     else:
-        print 'Unittest failed: %d failures, %d errors!' % (len(result.failures),len(result.errors))
+        print('Unittest failed: %d failures, %d errors!' % (len(result.failures),len(result.errors)))

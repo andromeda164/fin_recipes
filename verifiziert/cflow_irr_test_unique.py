@@ -49,7 +49,7 @@ def cash_flow_unique_irr(cflow_times, cflow_amounts):
     for t in range(len(cflow_times)):
         if (sgn(cflow_amounts[t-1]) !=sgn(cflow_amounts[t])): sign_changes+=1
     if DEBUG:
-        print 'Sign changes (Descartes): %d' % sign_changes
+        print('Sign changes (Descartes): %d' % sign_changes)
     if sign_changes==0: return False  # can not find any irr
     if sign_changes==1: return True
 
@@ -62,38 +62,38 @@ def cash_flow_unique_irr(cflow_times, cflow_amounts):
         if sgn(A_prima) != sgn(A):
             sign_changes += 1
     if DEBUG:
-        print 'Sign changes (aggregate): %d' % sign_changes
+        print('Sign changes (aggregate): %d' % sign_changes)
     if sign_changes<=1:
         return True
     return False
 
 if __name__=='__main__':
     # Testing
-    print 'Test program for the calculations'
+    print('Test program for the calculations')
     cflow_times = [0.0, 1.0, 2.0, 3.0, 4.0]
     cflow_amounts = [-100.0, 5.0,5.0,5.0,105.0]
     result = cash_flow_unique_irr(cflow_times, cflow_amounts)
-    print 'Cash Flows:'
+    print('Cash Flows:')
     for index in range(len(cflow_times)):
-        print 'CF at %f:\t%9.2f' % (cflow_times[index], cflow_amounts[index])
-    print 'Result should be True!'
-    print 'Result calculated: %s' % str(result)
-    print
-    print 'Next test program'
+        print('CF at %f:\t%9.2f' % (cflow_times[index], cflow_amounts[index]))
+    print('Result should be True!')
+    print('Result calculated: %s' % str(result))
+    print()
+    print('Next test program')
     cflow_amounts = [-100.0, 5.0,-5.0,10.0,105.0]
     result = cash_flow_unique_irr(cflow_times, cflow_amounts)
-    print 'Cash Flows:'
+    print('Cash Flows:')
     for index in range(len(cflow_times)):
-        print 'CF at %f:\t%9.2f' % (cflow_times[index], cflow_amounts[index])
-    print 'Result should be True!'
-    print 'Result calculated: %s' % str(result)
-    print
-    print 'Next test program'
+        print('CF at %f:\t%9.2f' % (cflow_times[index], cflow_amounts[index]))
+    print('Result should be True!')
+    print('Result calculated: %s' % str(result))
+    print()
+    print('Next test program')
     cflow_amounts = [-20.0, 25.0,-10.0,10.0,-20.0]
     result = cash_flow_unique_irr(cflow_times, cflow_amounts)
-    print 'Cash Flows:'
+    print('Cash Flows:')
     for index in range(len(cflow_times)):
-        print 'CF at %f:\t%9.2f' % (cflow_times[index], cflow_amounts[index])
-    print 'Result should be False!'
-    print 'Result calculated: %s' % str(result)
+        print('CF at %f:\t%9.2f' % (cflow_times[index], cflow_amounts[index]))
+    print('Result should be False!')
+    print('Result calculated: %s' % str(result))
 

@@ -41,7 +41,7 @@ class fx_spot(fx_pair.fx_pair):
     """ Class for modelling an FX Spot transaction."""
     def __init__(self, pair, transaction_date, base_amount = 0.0, counter_amount = 0.0, fx_rate = 0.0):
         if not isinstance(pair, fx_pair.fx_pair):
-            raise TypeError, 'fx pair furnished is not a fx_pair instance!'
+            raise TypeError('fx pair furnished is not a fx_pair instance!')
         fx_pair.fx_pair.__init__(self, pair.baseCurr(), pair.counterCurr(), pair.basis())
         if fx_rate:
             if base_amount:
@@ -49,11 +49,11 @@ class fx_spot(fx_pair.fx_pair):
             elif counter_amount:
                 base_amount = - counter_amount / fx_rate * pair.basis()
             else:
-                raise ValueError, 'Either base or counter currency amount must be not equal 0.'
+                raise ValueError('Either base or counter currency amount must be not equal 0.')
         elif base_amount and counter_amount:
             fx_rate = -counter_amount / base_amount * pair.basis()
         else:
-            raise ValueError, 'Two of fx_rate,  base or counter currency amount must be not equal 0.'
+            raise ValueError('Two of fx_rate,  base or counter currency amount must be not equal 0.')
         self.__fx_rate = fx_rate
         self.__base_amount = base_amount
         self.__counter_amount = counter_amount
@@ -74,8 +74,8 @@ class fx_spot(fx_pair.fx_pair):
 
 
 if __name__=="__main__":
-    print 'Test for class fx_spot'
-    print '----------------------'
+    print('Test for class fx_spot')
+    print('----------------------')
     CHF = currency.currency('CHF', 'Swiss Franc', calendars.CHF(), 2, 5)
     EUR = currency.currency('EUR', 'Euro', calendars.TARGET(), 2, 1)
     USD = currency.currency('USD', 'US Dollar', calendars.USD(), 2, 1)
@@ -91,10 +91,10 @@ if __name__=="__main__":
             bybase =    fx_spot(pair, transaction_date, base_amount=amount, fx_rate = rate)
             bycounter = fx_spot(pair, transaction_date, counter_amount=-amount*rate/pair.basis(), fx_rate = rate)
             byamount =  fx_spot(pair, transaction_date, base_amount=bybase.baseAmount(), counter_amount=bycounter.counterAmount())
-            print 'Should be all equal:'
-            print bybase
-            print bycounter
-            print byamount
-            print
-    print 'OK'
+            print('Should be all equal:')
+            print(bybase)
+            print(bycounter)
+            print(byamount)
+            print()
+    print('OK')
 

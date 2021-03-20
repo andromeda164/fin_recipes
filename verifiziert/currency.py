@@ -51,8 +51,8 @@ class currency:
 
 
 if __name__=="__main__":
-    print 'Test for class currency'
+    print('Test for class currency')
     CHF = currency('CHF', 'Swiss Franc', calendars.CHF(), 2, 5)
-    print CHF
-    print 'OK'
+    print(CHF)
+    print('OK')
 

@@ -47,16 +47,16 @@ def bonds_yield_to_maturity_discrete(times, cashflows, bondprice):
         top *= 1.5
     r = 0.5 * (top + bot)
     for i in range(MAX_ITERATIONS):
-	diff = bonds_price_discrete(times, cashflows,r) - bondprice
-	if abs(diff)<ACCURACY: return r
-	if diff>0.0: bot=r
-	else: top=r
-	r = 0.5 * (top+bot)
+        diff = bonds_price_discrete(times, cashflows,r) - bondprice
+        if abs(diff)<ACCURACY: return r
+        if diff>0.0: bot=r
+        else: top=r
+        r = 0.5 * (top+bot)
     return r
 
 if __name__=='__main__':
     # Testing
-    print 'Test program for the calculations'
+    print('Test program for the calculations')
     coupon = 5.0  # in percent
     price = 98.0 # in percent
     nominal = 10000.0
@@ -66,12 +66,12 @@ if __name__=='__main__':
                      coupon_payment,nominal+coupon_payment]
     result = bonds_yield_to_maturity_discrete(cflow_times, cflow_amounts, \
                                      nominal * price / 100.0)
-    print 'Bond yield calculation, %1.2f percent bond, price %3.2f' % \
-          (coupon, price)
-    print 'Cash Flows:'
+    print('Bond yield calculation, %1.2f percent bond, price %3.2f' % \
+          (coupon, price))
+    print('Cash Flows:')
     for index in range(len(cflow_times)):
-        print 'CF at %f:\t%9.2f' % (cflow_times[index], cflow_amounts[index])
-    print 'Result should be %1.6f percent (HP)!' % (5.5715305)
-    print 'Result calculated: %1.6f percent' % (result * 100.0)
+        print('CF at %f:\t%9.2f' % (cflow_times[index], cflow_amounts[index]))
+    print('Result should be %1.6f percent (HP)!' % (5.5715305))
+    print('Result calculated: %1.6f percent' % (result * 100.0))
 
 

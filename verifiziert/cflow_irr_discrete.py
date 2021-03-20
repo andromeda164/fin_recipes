@@ -36,7 +36,7 @@ def cash_flow_irr_discrete(cflow_times, cflow_amounts):
     # simple minded irr function.  Will find one root (if it exists.)
     # adapted from routine in Numerical Recipes in C.
     if len(cflow_times)!=len(cflow_amounts):
-        raise Exception, 'Not equal length cashflow times and amounts in cflow_irr_discrete!'
+        raise Exception('Not equal length cashflow times and amounts in cflow_irr_discrete!')
     ACCURACY = 1.0e-5
     MAX_ITERATIONS = 50
     x1 = 0.0
@@ -54,7 +54,7 @@ def cash_flow_irr_discrete(cflow_times, cflow_amounts):
         else:
             x2 += 1.6*(x2-x1)
             f2 = cash_flow_pv_discrete(cflow_times,cflow_amounts, x2)
-    if (f2*f1>0.0): raise 'Well know error (1) in cflow_irr_discrete!'
+    if (f2*f1>0.0): raise Exception('Well know error (1) in cflow_irr_discrete!')
     f = cash_flow_pv_discrete(cflow_times,cflow_amounts, x1)
     rtb = 0.0
     dx = 0.0
@@ -72,16 +72,16 @@ def cash_flow_irr_discrete(cflow_times, cflow_amounts):
             rtb = x_mid
         if (abs(f_mid)<ACCURACY) | (abs(dx)<ACCURACY):
             return x_mid
-    raise 'Well know error (2) in cflow_irr_discrete!'
+    raise Exception('Well know error (2) in cflow_irr_discrete!')
 
 
 if __name__=='__main__':
     # Testing
-    print 'Test program for the calculations'
+    print('Test program for the calculations')
     cflow_times = [0.0, 1.0, 2.0, 3.0, 4.0]
     cflow_amounts = [-100.0, 5.0,5.0,5.0,105.0]
-    print 'Cash Flows:'
+    print('Cash Flows:')
     for index in range(len(cflow_times)):
-        print 'CF at %f:\t%9.2f' % (cflow_times[index], cflow_amounts[index])
-    print 'Result should be 5.0!'
-    print 'Result calculated: ', cash_flow_irr_discrete(cflow_times, cflow_amounts)*100.0
+        print('CF at %f:\t%9.2f' % (cflow_times[index], cflow_amounts[index]))
+    print('Result should be 5.0!')
+    print('Result calculated: ', cash_flow_irr_discrete(cflow_times, cflow_amounts)*100.0)

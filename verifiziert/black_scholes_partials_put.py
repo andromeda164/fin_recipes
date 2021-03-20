@@ -49,18 +49,18 @@ def option_price_partials_put_black_scholes(S, K, r, sigma, time):
     return Delta, Gamma, Theta, Vega, Rho
 
 if __name__=="__main__":
-    print 'Test for european Put Greeks. (B&S-Framework)'
+    print('Test for european Put Greeks. (B&S-Framework)')
     S = 50.0
     K = 50.0
     r = 0.1
     time = 0.5
     sigma = 0.3
     delta, gamma, theta, vega, rho = option_price_partials_put_black_scholes(S, K, r, sigma, time)
-    print 'Option price partial derivatives, Put option using Black Scholes.'
-    print 'Delta: shold be %6.6f. Calculated: %6.6f.' % (-0.366262722, delta)
-    print 'Gamma: shold be %6.6f. Calculated: %6.6f.' % (0.035478872, gamma)
-    print 'Theta: shold be %6.6f. Calculated: %6.6f.' % (-0.005092021*365.0, theta)
-    print 'Vega: shold be %6.6f. Calculated: %6.6f.' % (13.3045769, vega)
-    print 'Rho: shold be %6.6f. Calculated: %6.6f.' % (-0.106639263*100.0, rho)
-    print 'OK.'
+    print('Option price partial derivatives, Put option using Black Scholes.')
+    print('Delta: shold be %6.6f. Calculated: %6.6f.' % (-0.366262722, delta))
+    print('Gamma: shold be %6.6f. Calculated: %6.6f.' % (0.035478872, gamma))
+    print('Theta: shold be %6.6f. Calculated: %6.6f.' % (-0.005092021*365.0, theta))
+    print('Vega: shold be %6.6f. Calculated: %6.6f.' % (13.3045769, vega))
+    print('Rho: shold be %6.6f. Calculated: %6.6f.' % (-0.106639263*100.0, rho))
+    print('OK.')
 

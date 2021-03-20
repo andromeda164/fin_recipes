@@ -53,8 +53,8 @@ def bonds_duration(cashflow_times, cashflow_amounts, d):
 
 if __name__=='__main__':
     # Testing
-    print 'Test program for the calculations'
-    print 'Duration (discretely compounded), see page 21 of manual.'
+    print('Test program for the calculations')
+    print('Duration (discretely compounded), see page 21 of manual.')
     times = [0.0, 1.0, 2.0, 3.0]
     discount_factors = [1.0, 0.97, 0.92, 0.89]
     ts = term_structure_class_cox_cubic_spline(times, discount_factors)
@@ -64,19 +64,19 @@ if __name__=='__main__':
     zins = bonds_yield_to_maturity_discrete(cflow_times, cflow_amounts, price)
     zins_cont = math.log(1.0 + zins)
     result = bonds_duration(cflow_times, cflow_amounts, ts)
-    print 'Interest rate: Annually %1.6f, Continuously %1.6f' % \
-          (zins, zins_cont)
-    print 'Bond Price %3.2f' % (price)
-    print 'Cash Flows:'
+    print('Interest rate: Annually %1.6f, Continuously %1.6f' % \
+          (zins, zins_cont))
+    print('Bond Price %3.2f' % (price))
+    print('Cash Flows:')
     t_PV = 0.0
     PV = 0.0
     for i in range(len(cflow_times)):
         t_PV += cflow_amounts[i] * math.exp(-zins_cont*cflow_times[i]) * cflow_times[i]
         PV += cflow_amounts[i] * math.exp(-zins_cont*cflow_times[i])
-        print 'CF at %2.1f:\t%9.1f, \tPV: %9.2f, \tt * PV(CF): %9.2f' \
+        print('CF at %2.1f:\t%9.1f, \tPV: %9.2f, \tt * PV(CF): %9.2f' \
               % (cflow_times[i], cflow_amounts[i], \
                  cflow_amounts[i] * math.exp(-zins_cont*cflow_times[i]), \
-                cflow_amounts[i] * math.exp(-zins_cont*cflow_times[i]) * cflow_times[i])
-    print 'Result should be %2.5f!' % (t_PV / PV)
-    print 'Result calculated with continuously compounded rate of %1.6f: %2.5f' % (zins_cont, result)
+                cflow_amounts[i] * math.exp(-zins_cont*cflow_times[i]) * cflow_times[i]))
+    print('Result should be %2.5f!' % (t_PV / PV))
+    print('Result calculated with continuously compounded rate of %1.6f: %2.5f' % (zins_cont, result))
 

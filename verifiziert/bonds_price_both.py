@@ -49,13 +49,13 @@ def bonds_price(coupon_times, coupon_amounts, \
     for i in range(len(coupon_times)):
         p += math.exp(-r*coupon_times[i])*coupon_amounts[i]
     for i in range(len(principal_times)):
-	p += math.exp(-r*principal_times[i])*principal_amounts[i]
+        p += math.exp(-r*principal_times[i])*principal_amounts[i]
     return p
 
 if __name__=='__main__':
     # Testing
-    print 'Test program for the calculations'
-    print 'bonds price (continuously compounded)'
+    print('Test program for the calculations')
+    print('bonds price (continuously compounded)')
     coupon_times = [1.0, 2.0, 3.0, 4.0]
     coupon_amounts = [50.0,50.0,50.0,50.0]
     principal_times = [4.0]
@@ -64,14 +64,14 @@ if __name__=='__main__':
     zins_cont = math.log(1.0 + zins)
     result = bonds_price(coupon_times, coupon_amounts, \
                 principal_times, principal_amounts, zins_cont)
-    print 'Interest rate: Annually %1.6f, Continuously %1.6f' % \
-          (zins, zins_cont)
-    print 'Coupons:'
+    print('Interest rate: Annually %1.6f, Continuously %1.6f' % \
+          (zins, zins_cont))
+    print('Coupons:')
     for index in range(len(coupon_times)):
-        print 'Coupon at %3.1f:\t%9.2f' % (coupon_times[index], coupon_amounts[index])
-    print 'Principals:'
+        print('Coupon at %3.1f:\t%9.2f' % (coupon_times[index], coupon_amounts[index]))
+    print('Principals:')
     for index in range(len(principal_amounts)):
-        print 'Principal at %3.1f:\t%9.2f' % (principal_times[index], principal_amounts[index])
-    print 'Result should be 1000.0!'
-    print 'Result calculated with continously compounded rate of %1.6f: %4.2f' % (zins_cont, result)
+        print('Principal at %3.1f:\t%9.2f' % (principal_times[index], principal_amounts[index]))
+    print('Result should be 1000.0!')
+    print('Result calculated with continously compounded rate of %1.6f: %4.2f' % (zins_cont, result))
 

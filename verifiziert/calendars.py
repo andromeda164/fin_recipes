@@ -29,7 +29,7 @@ class calendar:
     def __init__(self, off_dates):
         self.off_date_list = []
         if not type(off_dates)==type(self.off_date_list):
-            raise TypeError, 'Wrong argument type used in calendar constructor (list of strings)!'
+            raise TypeError('Wrong argument type used in calendar constructor (list of strings)!')
         for off_date in off_dates:
             # Konversion in dates.date-Typ
             data = dates.date('EU',off_date)
@@ -44,7 +44,7 @@ class calendar:
             try:
                 datum=dates.date('autodetect',datum)
             except:
-                raise SyntaxError, 'Wrong argument type used in calendar.is_businessday (string with wrong format)!'
+                raise SyntaxError('Wrong argument type used in calendar.is_businessday (string with wrong format)!')
         if datum.is_weekend():
             return False
         elif datum in self.off_date_list:
@@ -333,7 +333,7 @@ if __name__ == "__main__":
     import unittest
     import sys
 
-    print 'Unittesting'
+    print('Unittesting')
     USD_off_dates = [ \
             '01.01.2002','25.12.2002','26.12.2002','01.01.2003',
             '02.01.2003','18.04.2003','21.04.2003','01.05.2003',
@@ -489,6 +489,6 @@ if __name__ == "__main__":
     suite.addTest(CalendarTestBadFormattedConstructorValues("testBadFormattedConstructorValues"))
     result = unittest.TextTestRunner(stream=sys.stdout, verbosity=2).run(suite)
     if result.wasSuccessful():
-        print 'Unittest properly executed with %d tests, %d failed.' % (result.testsRun, len(result.failures))
+        print('Unittest properly executed with %d tests, %d failed.' % (result.testsRun, len(result.failures)))
     else:
-        print 'Unittest failed: %d failures, %d errors!' % (len(result.failures),len(result.errors))
+        print('Unittest failed: %d failures, %d errors!' % (len(result.failures),len(result.errors)))

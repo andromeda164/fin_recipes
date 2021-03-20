@@ -50,11 +50,11 @@ def term_structure_yield_linearly_interpolated(time, obs_times, obs_yields):
     return r
 
 if __name__=='__main__':
-    print 'Test program for the calculations'
+    print('Test program for the calculations')
     obs_times = [0.1, 0.5, 1.0, 5.0, 10.0]
     obs_yields = [0.1, 0.2, 0.3, 0.4, 0.5]
     times = [0.1, 0.5, 1.0, 3.0, 5.0, 10.0]
-    print 'Yields at times:'
+    print('Yields at times:')
     for index in range(len(times)):
-        print 'time %1.1f: yield %1.2f' \
-              % (times[index], term_structure_yield_linearly_interpolated(times[index], obs_times, obs_yields))
+        print('time %1.1f: yield %1.2f' \
+              % (times[index], term_structure_yield_linearly_interpolated(times[index], obs_times, obs_yields)))

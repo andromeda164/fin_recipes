@@ -43,7 +43,7 @@ class term_structure_class_cubic_spline(term_structure_class):
         self.c_ = c
         self.d_ = d
         if len(f)!=len(knots):
-            raise Exception, 'Lenght of f and knots in term_structure_class_cubic_spline not equal!'
+            raise Exception('Lenght of f and knots in term_structure_class_cubic_spline not equal!')
         self.f_ = copy.copy(f)
         self.knots_ = copy.copy(knots)
         pass
@@ -57,31 +57,31 @@ if __name__=='__main__':
 
     # vielleicht sind die Beispiele auf Seite 150 falsch
     # oder zumindest unsinnig!!!
-    print 'Test program for the calculations'
-    print 'See p. 150 of manual.'
+    print('Test program for the calculations')
+    print('See p. 150 of manual.')
     b = 0.1
     c = 0.1
     d = -0.1
     f = [0.01, 0.01, -0.01]
     knots = [2.0, 7.0, 12.0]
-    print 'Direct calculations, discount factor (t=1) %1.6f' \
-          % term_structure_discount_factor_cubic_spline(1,b,c,d,f,knots)
+    print('Direct calculations, discount factor (t=1) %1.6f' \
+          % term_structure_discount_factor_cubic_spline(1,b,c,d,f,knots))
     cs = term_structure_class_cubic_spline(b,c,d,f,knots)
-    print 'Using a term structure class: yield (t=1) = %1.6f' % cs.Yield(1.0)
-    print 'Discount factor (t=1) = %1.6f' % cs.discount_factor(1.0)
-    print 'Forward (t1=1, t2=2) = %1.6f' % cs.forward_rate(1.0,2.0)
+    print('Using a term structure class: yield (t=1) = %1.6f' % cs.Yield(1.0))
+    print('Discount factor (t=1) = %1.6f' % cs.discount_factor(1.0))
+    print('Forward (t1=1, t2=2) = %1.6f' % cs.forward_rate(1.0,2.0))
 
-    print
-    print 'Test with more sense...'
-    print 'to do...'
+    print()
+    print('Test with more sense...')
+    print('to do...')
     b = 0.1
     c = 0.1
     d = -0.1
     f = [0.01, 0.01, -0.01]
     knots = [2.0, 7.0, 12.0]
-    print 'Direct calculations, discount factor (t=1) %1.6f' \
-          % term_structure_discount_factor_cubic_spline(1,b,c,d,f,knots)
+    print('Direct calculations, discount factor (t=1) %1.6f' \
+          % term_structure_discount_factor_cubic_spline(1,b,c,d,f,knots))
     cs = term_structure_class_cubic_spline(b,c,d,f,knots)
-    print 'Using a term structure class: yield (t=1) = %1.6f' % cs.Yield(1.0)
-    print 'Discount factor (t=1) = %1.6f' % cs.discount_factor(1.0)
-    print 'Forward (t1=1, t2=2) = %1.6f' % cs.forward_rate(1.0,2.0)
+    print('Using a term structure class: yield (t=1) = %1.6f' % cs.Yield(1.0))
+    print('Discount factor (t=1) = %1.6f' % cs.discount_factor(1.0))
+    print('Forward (t1=1, t2=2) = %1.6f' % cs.forward_rate(1.0,2.0))

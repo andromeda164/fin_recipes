@@ -42,21 +42,21 @@ def bonds_price(cashflow_times, cashflows, d):
 
 if __name__=='__main__':
     # Testing
-    print 'Test program for the calculations'
-    print 'bonds price (with Term structure)'
+    print('Test program for the calculations')
+    print('bonds price (with Term structure)')
     cflow_times = [1.0, 2.0, 3.0, 4.0]
     cflow_amounts = [50.0,50.0,50.0,1050.0]
     times = [0.0, 1.5, 2.5, 3.5]
     discount_factors = [1.0, 0.97, 0.92, 0.89]
     ts = term_structure_class_cox_cubic_spline(times, discount_factors)
     result = bonds_price(cflow_times, cflow_amounts, ts)
-    print 'Cash Flows:'
+    print('Cash Flows:')
     for index in range(len(cflow_times)):
-        print 'CF at %f:\t%9.2f,\tDF %1.6f, \tPV %9.2f' \
+        print('CF at %f:\t%9.2f,\tDF %1.6f, \tPV %9.2f' \
               % (cflow_times[index], cflow_amounts[index], \
                  ts.discount_factor(cflow_times[index]), \
-                 ts.discount_factor(cflow_times[index])*cflow_amounts[index])
-    print 'Result should be 1063.01!'
-    print 'Result calculated: %4.2f' % result
+                 ts.discount_factor(cflow_times[index])*cflow_amounts[index]))
+    print('Result should be 1063.01!')
+    print('Result calculated: %4.2f' % result)
 
 

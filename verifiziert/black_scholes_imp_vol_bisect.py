@@ -125,7 +125,7 @@ def option_price_implied_volatility_put_black_scholes_bisections( \
 
 if __name__=="__main__":
     from black_scholes_imp_vol_newt import option_price_implied_volatility_call_black_scholes_newton
-    print 'Test for european Call Implied Volatility. (B&S-Framework)'
+    print('Test for european Call Implied Volatility. (B&S-Framework)')
     S = 50.0
     K = 50.0
     r = 0.1
@@ -135,18 +135,18 @@ if __name__=="__main__":
     sigma = 0.0
     sigma = option_price_implied_volatility_call_black_scholes_bisections( \
                                                 S, K, r, time, current_price)
-    print 'Implied volatility calculated by means of the Bisection-Algorithm.'
-    print 'Sigma: should be %6.8f. Calculated: %6.8f.' % (0.0500427, sigma)
+    print('Implied volatility calculated by means of the Bisection-Algorithm.')
+    print('Sigma: should be %6.8f. Calculated: %6.8f.' % (0.0500427, sigma))
     sigma = 0.0
     sigma = option_price_implied_volatility_call_black_scholes_newton( \
                                                 S, K, r, time, current_price)
-    print 'Implied volatility calculated by means of the Newton-Raphson-Algorithm.'
-    print 'Sigma: should be %6.8f. Calculated: %6.8f.' % (0.0500414, sigma)
-    print 'OK.'
+    print('Implied volatility calculated by means of the Newton-Raphson-Algorithm.')
+    print('Sigma: should be %6.8f. Calculated: %6.8f.' % (0.0500414, sigma))
+    print('OK.')
 
-    print
+    print()
     from black_scholes_imp_vol_newt import option_price_implied_volatility_put_black_scholes_newton
-    print 'Test for european Put Implied Volatility. (B&S-Framework)'
+    print('Test for european Put Implied Volatility. (B&S-Framework)')
     S = 42.0
     K = 40.0
     r = 0.10
@@ -156,12 +156,12 @@ if __name__=="__main__":
     sigma = 0.0
     sigma = option_price_implied_volatility_put_black_scholes_bisections( \
                                                 S, K, r, time, current_price)
-    print 'Implied volatility calculated by means of the Bisection-Algorithm.'
-    print 'Sigma: should be %6.8f. Calculated: %6.8f.' % (0.2, sigma)
+    print('Implied volatility calculated by means of the Bisection-Algorithm.')
+    print('Sigma: should be %6.8f. Calculated: %6.8f.' % (0.2, sigma))
     sigma = 0.0
     sigma = option_price_implied_volatility_put_black_scholes_newton( \
                                                 S, K, r, time, current_price)
-    print 'Implied volatility calculated by means of the Newton-Raphson-Algorithm.'
-    print 'Sigma: should be %6.8f. Calculated: %6.8f.' % (0.2, sigma)
-    print 'OK.'
+    print('Implied volatility calculated by means of the Newton-Raphson-Algorithm.')
+    print('Sigma: should be %6.8f. Calculated: %6.8f.' % (0.2, sigma))
+    print('OK.')
 

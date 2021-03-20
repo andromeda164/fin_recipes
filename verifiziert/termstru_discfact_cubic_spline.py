@@ -35,7 +35,7 @@
     Literatur       --
 *******************************************************"""
 import math
-import Numeric
+import numpy
 
 def term_structure_discount_factor_cubic_spline(t, b1, c1, d1, f, knots):
     d = 0.0
@@ -43,21 +43,21 @@ def term_structure_discount_factor_cubic_spline(t, b1, c1, d1, f, knots):
     for i in range(len(knots)):
         if t >= knots[i]:
             d += f[i] * math.pow((t-knots[i]),3.0)
-	else:
+        else:
             break
     return d
 
 def spline3_coef(t, y):
     """ Funktion nach Manual vom Kurs Cox, S. 297 """
     n = len(t) - 1
-    h = Numeric.zeros((n), Numeric.Float)
-    b = Numeric.zeros((n), Numeric.Float)
-    u = Numeric.zeros((n), Numeric.Float)
-    v = Numeric.zeros((n), Numeric.Float)
-    z = Numeric.zeros((n+1), Numeric.Float)
+    h = numpy.zeros((n))
+    b = numpy.zeros((n))
+    u = numpy.zeros((n))
+    v = numpy.zeros((n))
+    z = numpy.zeros((n))
     i = 0
     if len(t)!=len(y):
-        raise Exception, 'knot points not of equal length with values furnished!'
+        raise Exception('knot points not of equal length with values furnished!')
     for i in range(n):
         h[i] = t[i+1] - t[i]
         b[i] = (y[i+1] - y[i]) / h[i]
@@ -88,11 +88,11 @@ def spline3_eval(t, y, z, x):
 if __name__=='__main__':
     # Testing
 
-    print 'Test program for the calculations'
-    print 'See p. 299 of manual course Cox GE.'
-    print 'Test of well-known serpentine-curve: f(x/(0.25 + x*x))'
+    print('Test program for the calculations')
+    print('See p. 299 of manual course Cox GE.')
+    print('Test of well-known serpentine-curve: f(x/(0.25 + x*x))')
     def serpentine_curve(x):
-	return x/(0.25 + x*x)
+        return x/(0.25 + x*x)
     t = [-1.25,-1.15,-1.05,-0.95,-0.85,-0.75,-0.65,-0.55,-0.45,-0.35,-0.25,
          -0.15,-0.05,0.05,0.15,0.25,0.35,0.45,0.55,0.65,0.75,0.85,0.95,1.05,1.15,1.25]
     
@@ -104,7 +104,7 @@ if __name__=='__main__':
     n = len(t) - 1
     
     z = spline3_coef(t, y)
-    for i in Numeric.arange(-1.25,1.3,0.05):
-        print 'x = %1.2f,\twith cubic splines: %1.6f,\tanalytic: %1.6f' \
-              % (i, spline3_eval(t,y,z,i), serpentine_curve(i))
+    for i in numpy.arange(-1.25,1.3,0.05):
+        print('x = %1.2f,\twith cubic splines: %1.6f,\tanalytic: %1.6f' \
+              % (i, spline3_eval(t,y,z,i), serpentine_curve(i)))
 

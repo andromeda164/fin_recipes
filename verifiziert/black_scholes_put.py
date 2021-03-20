@@ -39,9 +39,9 @@ def option_price_put_black_scholes(S, K, r, sigma, time):
 
 if __name__=="__main__":
     # Test
-    print 'Test for Black&Scholes formula'
-    print 'Price for an European Call Option (p. 57 manual).'
-    print
+    print('Test for Black&Scholes formula')
+    print('Price for an European Call Option (p. 57 manual).')
+    print()
     S = 42.0
     K = 40.0
     r = 0.10
@@ -50,7 +50,7 @@ if __name__=="__main__":
     style = 'european'
     type = 'put'
     value = option_price_put_black_scholes(S, K, r, sigma, time)
-    print 'noch das ausrechnen!!!'
-    print 'The result should be according to the manual: %6.2f.' % (0.81)
-    print 'The theoretical price for a %s %s option with strike %4.2f is: %6.5f' \
-          % (style, type, K, value) 
+    print('noch das ausrechnen!!!')
+    print('The result should be according to the manual: %6.2f.' % (0.81))
+    print('The theoretical price for a %s %s option with strike %4.2f is: %6.5f' \
+          % (style, type, K, value) )

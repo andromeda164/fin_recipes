@@ -35,7 +35,7 @@ class Connection:
             c.constr = self.constr
             self.cursor = c
         except IndexError:
-            print "Could not connect"
+            print('Could not connect')
 
     def commit(self):
         "this is here for compatibility"
@@ -162,15 +162,15 @@ class Cursor:
 #   c = Connection('(local)','sa','sa password',db='pubs')
 if __name__ == '__main__':
     c = Connection('SDBDEVLU006102',db='FA')
-    print c.constr      #print the connection string
-    print c.connected   #prints 1 if connected OK
+    print(c.constr)      #print the connection string
+    print(c.connected)   #prints 1 if connected OK
     cu = c.cursor       #create the cursor
     lst = cu.execute('select * from dbo.tblInstrument')
-    print 'rowcount=' + str(cu.rowcount) #test print of record count
+    print('rowcount=' + str(cu.rowcount)) #test print of record count
     rows = cu.fetchall()
     for x in rows:
-        print x
+        print(x)
     # prints fieldnames
     for f in cu.fieldnames:
-        print str(f)
+        print(str(f))
     c.close()

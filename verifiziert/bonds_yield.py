@@ -56,7 +56,7 @@ def bonds_yield_to_maturity(cashflow_times, cashflow_amounts, bondprice):
 
 if __name__=='__main__':
     # Testing
-    print 'Test program for the calculations'
+    print('Test program for the calculations')
     coupon = 5.0  # in percent
     price = 100.0 # in percent
     nominal = 10000.0
@@ -66,13 +66,13 @@ if __name__=='__main__':
                      coupon_payment,nominal+coupon_payment]
     result = bonds_yield_to_maturity(cflow_times, cflow_amounts, \
                                      nominal * price / 100.0)
-    print 'Bond yield calculation, %1.2f percent bond, price %3.2f' % \
-          (coupon, price)
-    print 'Coupon continuously compounded: %1.6f percent' % \
-          (math.log(1.0+coupon/100.0)*100.0)
-    print 'Cash Flows:'
+    print('Bond yield calculation, %1.2f percent bond, price %3.2f' % \
+          (coupon, price))
+    print('Coupon continuously compounded: %1.6f percent' % \
+          (math.log(1.0+coupon/100.0)*100.0))
+    print('Cash Flows:')
     for index in range(len(cflow_times)):
-        print 'CF at %f:\t%9.2f' % (cflow_times[index], cflow_amounts[index])
-    print 'Result should be %1.4f percent!' % (math.log(1.0+coupon/100.0)*100.0)
-    print 'Result calculated: %1.4f percent' % (result * 100.0)
+        print('CF at %f:\t%9.2f' % (cflow_times[index], cflow_amounts[index]))
+    print('Result should be %1.4f percent!' % (math.log(1.0+coupon/100.0)*100.0))
+    print('Result calculated: %1.4f percent' % (result * 100.0))
 

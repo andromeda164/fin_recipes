@@ -18,7 +18,7 @@
     Literatur       OK          
 *******************************************************"""
 from random_uniform import *
-import math
+import math, functools, numpy
 
 def random_normal():
     U1 = 0.0
@@ -37,14 +37,14 @@ def random_normal():
     return X1
 
 if __name__=='__main__':
-    import Numeric
+    #import Numeric
     # Testing
     MAXINDEX = 100000
-    print 'Test program for the calculations'
-    print '%d random numbers generated:' % MAXINDEX
+    print('Test program for the calculations')
+    print('%d random numbers generated:' % MAXINDEX)
     results = Numeric.zeros((MAXINDEX), Numeric.Float)
     for i in range(MAXINDEX):
         results[i] = random_normal()
-    print 'Mean %1.6f, Variance %1.6f' \
+    print('Mean %1.6f, Variance %1.6f' \
           % (Numeric.average(results), \
-             reduce(Numeric.add,Numeric.power(results-Numeric.average(results),2.0)) / (len(results)-1) )
+             functools.reduce(functools.add,pow(results-Numeric.average(results),2.0)) / (len(results)-1) ))

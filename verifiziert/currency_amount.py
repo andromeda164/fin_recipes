@@ -52,7 +52,7 @@ class currency_amount(currency.currency):
     
     def __add__(self, other):
         if self.ISOCode()!=other.ISOCode():
-            raise ValueError, 'Amounts of different currencies cannot be added!'
+            raise ValueError('Amounts of different currencies cannot be added!')
         result = self.amount() + other.amount()
         return currency_amount(result, self.ISOCode(), self.name(), \
                                self.calendar(), \
@@ -61,7 +61,7 @@ class currency_amount(currency.currency):
 
     def __sub__(self, other):
         if self.ISOCode()!=other.ISOCode():
-            raise ValueError, 'Amounts of different currencies cannot be subtracted!'
+            raise ValueError('Amounts of different currencies cannot be subtracted!')
         result = self.amount() - other.amount()
         return currency_amount(result, self.ISOCode(), self.name(), \
                                self.calendar(), \
@@ -70,7 +70,7 @@ class currency_amount(currency.currency):
 
     def __mul__(self, other):
         if self.ISOCode()!=other.ISOCode():
-            raise ValueError, 'Amounts of different currencies cannot be multiplied!'
+            raise ValueError('Amounts of different currencies cannot be multiplied!')
         result = self.amount() * other.amount()
         return currency_amount(result, self.ISOCode(), self.name(), \
                                self.calendar(), \
@@ -79,7 +79,7 @@ class currency_amount(currency.currency):
 
     def __div__(self, other):
         if self.ISOCode()!=other.ISOCode():
-            raise ValueError, 'Amounts of different currencies cannot be divided!'
+            raise ValueError('Amounts of different currencies cannot be divided!')
         result = self.amount() / other.amount()
         return currency_amount(result, self.ISOCode(), self.name(), \
                                self.calendar(), \
@@ -88,7 +88,7 @@ class currency_amount(currency.currency):
 
     def __floordiv__(self, other):
         if self.ISOCode()!=other.ISOCode():
-            raise ValueError, 'Amounts of different currencies cannot be divided!'
+            raise ValueError('Amounts of different currencies cannot be divided!')
         result = self.amount() // other.amount()
         return currency_amount(result, self.ISOCode(), self.name(), \
                                self.calendar(), \
@@ -97,7 +97,7 @@ class currency_amount(currency.currency):
 
     def __mod__(self, other):
         if self.ISOCode()!=other.ISOCode():
-            raise ValueError, 'Amounts of different currencies cannot be divided!'
+            raise ValueError('Amounts of different currencies cannot be divided!')
         result = self.amount() % other.amount()
         return currency_amount(result, self.ISOCode(), self.name(), \
                                self.calendar(), \
@@ -106,7 +106,7 @@ class currency_amount(currency.currency):
 
     def __pow__(self, other):
         if self.ISOCode()!=other.ISOCode():
-            raise ValueError, 'Amounts of different currencies cannot be divided!'
+            raise ValueError('Amounts of different currencies cannot be divided!')
         result = self.amount() ** other.amount()
         return currency_amount(result, self.ISOCode(), self.name(), \
                                self.calendar(), \
@@ -160,7 +160,7 @@ class currency_amount(currency.currency):
             elif self.__amount == other: return 0
             else: return -1
         else:
-            raise SyntaxError, 'comparison for the operand type not supported'
+            raise SyntaxError('comparison for the operand type not supported')
 
     ## Right hand arithmetic operations
 
@@ -219,26 +219,26 @@ class currency_amount(currency.currency):
 
 
 if __name__=="__main__":
-    print 'Test for class currency_amount'
-    print '------------------------------'
+    print('Test for class currency_amount')
+    print('------------------------------')
     amounts = [1.265, 0.023, 24.99, 25.1, 99.1, 997.75]
-    print
-    print 'Rounding test'
-    print
+    print()
+    print('Rounding test')
+    print()
     for amount in amounts:
-        print 'Testing amount of %f' % amount
+        print('Testing amount of %f' % amount)
         CHF = currency_amount(amount, 'CHF', 'Swiss Franc', calendars.CHF(), 2, 5)
         EUR = currency_amount(amount, 'EUR', 'Euro', calendars.TARGET(), 2, 1)
         USD = currency_amount(amount, 'USD', 'US Dollar', calendars.USD(), 2, 1)
         ITL = currency_amount(amount, 'ITL', 'Lire Italiane', calendars.TARGET(), -1, 5)
-        if CHF>0.0:
-            print float(CHF), CHF+CHF, CHF-CHF, CHF*CHF, CHF/CHF, CHF//CHF, CHF%CHF
-        if EUR>0.0:
-            print float(EUR), EUR+EUR, EUR-EUR, EUR*EUR, EUR/EUR, EUR//EUR, EUR%EUR
-        if USD>0.0:
-            print float(USD), USD+USD, USD-USD, USD*USD, USD/USD, USD//USD, USD%USD
-        if ITL>0.0:
-            print float(ITL), ITL+ITL, ITL-ITL, ITL*ITL, ITL/ITL, ITL//ITL, ITL%ITL
-        print
-    print 'OK'
+        if CHF!=0.0:
+            print(float(CHF), CHF+CHF, CHF-CHF, CHF*CHF, CHF/CHF, CHF//CHF, CHF%CHF)
+        if EUR!=0.0:
+            print(float(EUR), EUR+EUR, EUR-EUR, EUR*EUR, EUR/EUR, EUR//EUR, EUR%EUR)
+        if USD!=0.0:
+            print(float(USD), USD+USD, USD-USD, USD*USD, USD/USD, USD//USD, USD%USD)
+        if ITL!=0.0:
+            print(float(ITL), ITL+ITL, ITL-ITL, ITL*ITL, ITL/ITL, ITL//ITL, ITL%ITL)
+        print()
+    print('OK')
 

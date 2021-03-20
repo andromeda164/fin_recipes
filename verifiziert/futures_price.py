@@ -25,8 +25,8 @@ def futures_price(S, r, time_to_maturity):
     return math.exp(r*time_to_maturity)*S
 
 if __name__=="__main__":
-    print 'Test for Futures pricing formula (without dividend yield):'
-    print 'The price for a futures should be 105.127. The formula yields %6.3f.' \
-          % (futures_price(100.0, 0.1, 0.5))
-    print 'OK'
+    print('Test for Futures pricing formula (without dividend yield):')
+    print('The price for a futures should be 105.127. The formula yields %6.3f.' \
+          % (futures_price(100.0, 0.1, 0.5)))
+    print('OK')
 
