@@ -1,0 +1,17 @@
+# ignore rules
+
+# Excel files
+*.xlsx
+*.xls
+
+# C++ files (original library)
+*.cc
+
+# Compiled python files
+*.pyc
+
+# documentation
+*.pdf
+*.doc
+*.docx
+
