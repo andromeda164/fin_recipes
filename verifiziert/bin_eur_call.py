@@ -53,9 +53,9 @@ def option_price_call_european_binomial(S, X, r, sigma, t, steps):
     p_up = (R-d)/(u-d)
     p_down = 1.0-p_up
     if DEBUG and 0:
-        print 'u: %6.5f, d: %6.5f' % (u, d)
-        print 'p: %6.5f, (1-p): %6.5f' % (p_up, p_down)
-        print 'R: %6.5f, Rinv: %6.5f' % (R, Rinv)
+        print('u: %6.5f, d: %6.5f' % (u, d))
+        print('p: %6.5f, (1-p): %6.5f' % (p_up, p_down))
+        print('R: %6.5f, Rinv: %6.5f' % (R, Rinv))
     # price of underlying
     prices = [0.0 for j in range(steps+1)]
     # fill in the endnodes.
@@ -76,21 +76,21 @@ def option_price_call_european_binomial(S, X, r, sigma, t, steps):
 if __name__=="__main__":
     DEBUG = 1
     from black_scholes_call import *
-    print 'Test for function option_price_call_european_binomial.'
-    print
+    print('Test for function option_price_call_european_binomial.')
+    print()
     no_steps = 10
     S = 100.0
-    X = 100.0
+    X = 100
     r = 0.025
     sigma = 0.2
     t = 1.0
-    print 'comparison of accuracy for different strikes.'
-    for K in range(X-20.0,X+21.0,5.0):
-        print 'Strike price %3.1f:' % K
+    print('comparison of accuracy for different strikes.')
+    for K in range(X-20,X+21,5):
+        print('Strike price %3.1f:' % K)
         bs_value = option_price_call_black_scholes(S, K, r, sigma, t)
         for steps in range(5,201,5):
             value = option_price_call_european_binomial(S, K, r, sigma, t, steps)
-            print 'Cox-Ross Tree with %d nodes: %9.6f, analytically %9.6f. Accuracy %1.6f percent.' \
-                  % (steps, value, bs_value, (value-bs_value)/bs_value*100.0)
-        print
-        print
+            print('Cox-Ross Tree with %d nodes: %9.6f, analytically %9.6f. Accuracy %1.6f percent.' \
+                  % (steps, value, bs_value, (value-bs_value)/bs_value*100.0))
+        print()
+        print()

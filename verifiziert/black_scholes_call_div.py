@@ -48,9 +48,9 @@ def option_price_european_call_dividends( \
     return option_price_call_black_scholes(adjusted_S,K,r,sigma,time_to_maturity)
 
 if __name__=="__main__":
-    print 'Test for Black&Scholes with discrete dividends formula'
-    print 'Price for an European Call Option (p. 69 manual).'
-    print
+    print('Test for Black&Scholes with discrete dividends formula')
+    print('Price for an European Call Option (p. 69 manual).')
+    print()
     S = 100.0
     K = 100.0
     r = 0.10
@@ -63,7 +63,7 @@ if __name__=="__main__":
     type = 'call'
     value = option_price_european_call_dividends( \
         S, K, r, sigma, time, dividend_times, dividend_amounts)
-    print 'The result should be according to the manual: %6.5f.' % (11.8094)
-    print 'The theoretical price for a %s %s option with strike %4.2f is: %6.5f' \
-          % (style, type, K, value)
-    print 'OK.'
+    print('The result should be according to the manual: %6.5f.' % (11.8094))
+    print('The theoretical price for a %s %s option with strike %4.2f is: %6.5f' \
+          % (style, type, K, value))
+    print('OK.')

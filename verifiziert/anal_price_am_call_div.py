@@ -77,8 +77,8 @@ def option_price_american_call_one_dividend(S,K,r,sigma,tau,D1,tau1):
     return C
 
 if __name__=="__main__":
-    print 'Test of Roll-Geske-Whaley-Formel for american Call-Options with'
-    print 'a single dividend.'
+    print('Test of Roll-Geske-Whaley-Formel for american Call-Options with')
+    print('a single dividend.')
     S = 100.0
     K = 100.0
     r = 0.1
@@ -87,5 +87,5 @@ if __name__=="__main__":
     tau1 = 0.5
     D1 = 10.0
     value = option_price_american_call_one_dividend(S,K,r,sigma,tau,D1,tau1)
-    print 'The Roll-Geske-Whaley-Formula result for an example option should be 10.0166. It is %6.6f.' % value
-    print 'Derivagem gives %6.6f.' % 10.00880
+    print('The Roll-Geske-Whaley-Formula result for an example option should be 10.0166. It is %6.6f.' % value)
+    print('Derivagem gives %6.6f.' % 10.00880)

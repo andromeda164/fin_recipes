@@ -76,10 +76,10 @@ def N(a, b, rho):
                 rho2 = ((rho * b - a) * sgn(b))/denum
                 delta=(1.0-sgn(a)*sgn(b))/4.0
                 return N(a,0.0,rho1) + N(b,0.0,rho2) - delta
-    raise Exception, 'Program error in N(a,b,rho) in cum_normal_bivariate!'
+    raise Exception('Program error in N(a,b,rho) in cum_normal_bivariate!')
     # should never get here...
 
 if __name__ == "__main__":
-    print 'Test program for cumulative, normal bivariate Distribution'
-    print 'N(0.0,0.0,0.0) should be 0.25: %6.6f' % N(0.0,0.0,0.0)
-    print 'N(0.0,0.0,0.999999999) should be 0.50: %6.6f' % N(0.0,0.0,0.999999999999)
+    print('Test program for cumulative, normal bivariate Distribution')
+    print('N(0.0,0.0,0.0) should be 0.25: %6.6f' % N(0.0,0.0,0.0))
+    print('N(0.0,0.0,0.999999999) should be 0.50: %6.6f' % N(0.0,0.0,0.999999999999))

@@ -57,8 +57,8 @@ def option_price_call_european_binomial_multi_period_given_ud( \
     p_up = (math.exp(r)-d)/(u-d)
     p_down = 1.0-p_up
     if DEBUG:
-        print 'p_up:\t%6.6f, p down:\t%6.6f, exp(-r):\t%6.6f' \
-              % (p_up, p_down, math.exp(-r))
+        print('p_up:\t%6.6f, p down:\t%6.6f, exp(-r):\t%6.6f' \
+              % (p_up, p_down, math.exp(-r)))
     # price of underlying
     # am linken Ende des Trees 1 Node mehr als No. Steps!
     prices = [0.0 for i in range(no_periods+1)]
@@ -107,9 +107,9 @@ if __name__=="__main__":
     DEBUG = 1
     from gen_tree_pdf import *
     from reportlab.pdfgen import *
-    print 'Test for function binomial_tree.'
-    print 'This test prints 3 pdf files in the current directory:'
-    print 'option_price_call_european_1.pdf, option_price_call_european_2.pdf and option_price_call_european_3.pdf'
+    print('Test for function binomial_tree.')
+    print('This test prints 3 pdf files in the current directory:')
+    print('option_price_call_european_1.pdf, option_price_call_european_2.pdf and option_price_call_european_3.pdf')
     c1 = canvas.Canvas("option_price_call_european_1.pdf")
     c2 = canvas.Canvas("option_price_call_european_2.pdf")
     c3 = canvas.Canvas("option_price_call_european_3.pdf")
@@ -123,7 +123,7 @@ if __name__=="__main__":
     tree = []
     value, tree = option_price_call_european_binomial_multi_period_given_ud( \
         S, K, r, u, d, no_steps)
-    print 'The value for %d periods is %6.5f.' % (no_steps, value)
+    print('The value for %d periods is %6.5f.' % (no_steps, value))
     drawBinomialTree(c1,5.0*cm,5.0*cm,22*cm,15*cm,tree)
     c1.showPage()
     c1.save()
@@ -132,7 +132,7 @@ if __name__=="__main__":
     r = r_initial
     value, tree = option_price_call_european_binomial_multi_period_given_ud( \
         S, K, r, u, d, no_steps)
-    print 'The value for %d periods is %6.5f.' % (no_steps, value)
+    print('The value for %d periods is %6.5f.' % (no_steps, value))
     drawBinomialTree(c2,5.0*cm,5.0*cm,22*cm,15*cm,tree)
     c2.showPage()
     c2.save()
@@ -141,7 +141,7 @@ if __name__=="__main__":
     r = r_initial / float(no_steps)
     value, tree = option_price_call_european_binomial_multi_period_given_ud( \
         S, K, r, u, d, no_steps)
-    print 'The value for %d periods is %6.5f.' % (no_steps, value)
+    print('The value for %d periods is %6.5f.' % (no_steps, value))
     drawBinomialTree(c3,2.0*cm,2.0*cm,26*cm,17*cm,tree)
     c3.showPage()
     c3.save()

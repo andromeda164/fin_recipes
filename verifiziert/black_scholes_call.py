@@ -40,9 +40,9 @@ def option_price_call_black_scholes(S, K, r, sigma, time):
 
 if __name__=="__main__":
     # Test
-    print 'Test for Black&Scholes formula'
-    print 'Price for an European Call Option (p. 57 manual).'
-    print
+    print('Test for Black&Scholes formula')
+    print('Price for an European Call Option (p. 57 manual).')
+    print()
     S = 50.0
     K = 50.0
     r = 0.10
@@ -51,13 +51,13 @@ if __name__=="__main__":
     style = 'european'
     type = 'call'
     value = option_price_call_black_scholes(S, K, r, sigma, time)
-    print 'The result should be according to the manual: %6.5f.' % (5.45325)
-    print 'The theoretical price for a %s %s option with strike %4.2f is: %6.5f' \
-          % (style, type, K, value) 
+    print('The result should be according to the manual: %6.5f.' % (5.45325))
+    print('The theoretical price for a %s %s option with strike %4.2f is: %6.5f' \
+          % (style, type, K, value) )
 
-    print
-    print 'Price for an European Call Option (p. 244 Hull).'
-    print
+    print()
+    print('Price for an European Call Option (p. 244 Hull).')
+    print()
     S = 42.0
     K = 40.0
     r = 0.10
@@ -66,13 +66,13 @@ if __name__=="__main__":
     style = 'european'
     type = 'call'
     value = option_price_call_black_scholes(S, K, r, sigma, time)
-    print 'The result should be according to the manual: %6.2f.' % (4.76)
-    print 'The theoretical price for a %s %s option with strike %4.2f is: %6.5f' \
-          % (style, type, K, value) 
+    print('The result should be according to the manual: %6.2f.' % (4.76))
+    print('The theoretical price for a %s %s option with strike %4.2f is: %6.5f' \
+          % (style, type, K, value) )
 
-    print
-    print 'Price for an European Call Option (p. 3/23 AZEK Derivatives).'
-    print
+    print()
+    print('Price for an European Call Option (p. 3/23 AZEK Derivatives).')
+    print()
     S = 280
     K = 260
     r = 0.0029955
@@ -81,6 +81,6 @@ if __name__=="__main__":
     style = 'european'
     type = 'call'
     value = option_price_call_black_scholes(S, K, r, sigma, time)
-    print 'The result should be according to the manual: %6.2f.' % (0.93)
-    print 'The theoretical price for a %s %s option with strike %4.2f is: %6.5f' \
-          % (style, type, K, value) 
+    print('The result should be according to the manual: %6.2f.' % (0.93))
+    print('The theoretical price for a %s %s option with strike %4.2f is: %6.5f' \
+          % (style, type, K, value) )

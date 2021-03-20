@@ -44,13 +44,13 @@ def N(z):
 
 if __name__=='__main__':
     # Testing
-    print 'Test program for the calculations'
+    print('Test program for the calculations')
     args = [0.0, 0.5, 1.0, 1.5, 2.0, 2.5, 3.0, 3.5, 4.0]
     results = [0.5, 0.5+0.19146, 0.5+0.34134, 0.5+0.43319, 0.5+0.47725, \
                0.5+0.49379, 0.5+0.49865, 0.5+0.49977, 0.5+0.49997]
     for index in range(len(args)):
-        print 'N(%1.2f):\t%1.6f\tagainst %1.6f' % (args[index], results[index],N(args[index]))
-    print 'all negative:'
+        print('N(%1.2f):\t%1.6f\tagainst %1.6f' % (args[index], results[index],N(args[index])))
+    print('all negative:')
     for index in range(len(args)):
-        print 'N(%1.2f):\t%1.6f\tagainst %1.6f' % (-args[index], 1.0-results[index],N(-args[index]))
+        print('N(%1.2f):\t%1.6f\tagainst %1.6f' % (-args[index], 1.0-results[index],N(-args[index])))
 
