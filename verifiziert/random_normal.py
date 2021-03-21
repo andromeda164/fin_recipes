@@ -42,9 +42,9 @@ if __name__=='__main__':
     MAXINDEX = 100000
     print('Test program for the calculations')
     print('%d random numbers generated:' % MAXINDEX)
-    results = Numeric.zeros((MAXINDEX), Numeric.Float)
+    results = numpy.zeros((MAXINDEX))
     for i in range(MAXINDEX):
         results[i] = random_normal()
     print('Mean %1.6f, Variance %1.6f' \
-          % (Numeric.average(results), \
-             functools.reduce(functools.add,pow(results-Numeric.average(results),2.0)) / (len(results)-1) ))
+          % (numpy.average(results), numpy.var(results)))
+    #functools.reduce(functools.add,pow(results-Numeric.average(results),2.0)) / (len(results)-1) ))
