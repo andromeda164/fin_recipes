@@ -36,14 +36,14 @@ def random_normal():
     X1 = V1 * math.sqrt((-2.0 * math.log(S)) / S)
     return X1
 
-if __name__=='__main__':
-    # Testing
-    MAXINDEX = 1000000
-    print('Test program for the calculations')
-    print('%d random numbers generated:' % MAXINDEX)
-    results = numpy.zeros((MAXINDEX+1))
-    for i in range(MAXINDEX):
-        results[i] = random_normal()
-    print('Mean %1.6f, Variance %1.6f' \
-          % (numpy.average(results), numpy.var(results)))
+##if __name__=='__main__':
+##    # Testing now with pytest
+##    MAXINDEX = 1000000
+##    print('Test program for the calculations')
+##    print('%d random numbers generated:' % MAXINDEX)
+##    results = numpy.zeros((MAXINDEX+1))
+##    for i in range(MAXINDEX):
+##        results[i] = random_normal()
+##    print('Mean %1.6f, Variance %1.6f' \
+##          % (numpy.average(results), numpy.var(results)))
 
