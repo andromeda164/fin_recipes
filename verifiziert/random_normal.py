@@ -18,7 +18,7 @@
     Literatur       OK          
 *******************************************************"""
 from random_uniform import *
-import math, functools, numpy
+import math, functools, numpy, pytest
 
 def random_normal():
     U1 = 0.0
@@ -36,15 +36,27 @@ def random_normal():
     X1 = V1 * math.sqrt((-2.0 * math.log(S)) / S)
     return X1
 
+def test_random_normal():
+    # pytest unittest
+    MAXINDEX = 1000000
+    # run a statistical test with MAXINDEX runs
+    results = numpy.zeros((MAXINDEX))
+    for i in range(MAXINDEX):
+        results[i] = random_normal()
+    # mean of a random normal variable should be 0
+    assert round(numpy.average(results), 2) == 0.0
+    # variance of a random normal variable should be 1
+    assert round(numpy.var(results), 2) == 1.0
+    return
+
 if __name__=='__main__':
-    #import Numeric
     # Testing
-    MAXINDEX = 100000
+    MAXINDEX = 1000000
     print('Test program for the calculations')
     print('%d random numbers generated:' % MAXINDEX)
-    results = Numeric.zeros((MAXINDEX), Numeric.Float)
+    results = numpy.zeros((MAXINDEX))
     for i in range(MAXINDEX):
         results[i] = random_normal()
     print('Mean %1.6f, Variance %1.6f' \
-          % (Numeric.average(results), \
-             functools.reduce(functools.add,pow(results-Numeric.average(results),2.0)) / (len(results)-1) ))
+          % (numpy.average(results), numpy.var(results)))
+
