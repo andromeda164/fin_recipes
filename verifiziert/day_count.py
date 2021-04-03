@@ -31,7 +31,7 @@
                                 sein (Datumstyp dieser Library!)
     D2M2Y2          string/date Datum, bis zu dem der Marchzins
                                 berechnet werden soll (Settlement
-                                date oder für Open Accrued Interest
+                                date oder fï¿½r Open Accrued Interest
                                 auch Valuation date + Spot days).
     D3M3Y3          string/date Datum des naechsten, relevanten
                                 Coupons.
@@ -405,7 +405,7 @@ if __name__=="__main__":
     #                ai_fraction = ai_fact(method[0],str(start_date),str(settle_date),str(maturity_date), freq,str(maturity_date))
     #                f.write('%d;%d;%s;%s;%s;%f\n' % (method[1], freq, str(start_date), str(settle_date), str(maturity_date), ai_fraction))
     #f.close()
-    freq = 2 was not defined here yet, see code above
+    freq = 2 # was not defined here yet, see code above
     print('Unit test Day count rules')
     print('Examples FA for testing:')
     print('Old Eurobonds convention (30/360E)')
