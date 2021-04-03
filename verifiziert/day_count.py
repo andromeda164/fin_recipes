@@ -386,7 +386,7 @@ def AI_Factor(daycount, D1M1Y1, D2M2Y2, D3M3Y3, F, maturity, coupon = 0.0, non_v
 if __name__=="__main__":
     # Unit test suite, tested with SWX-VB-Code and Book from R. Steiner
     
-    from Numeric import *
+    from numpy import *
     #f = open(r'DayCount_Unittest.csv','w')
     #f.write('daycount code;daycount method;frequency;start date;settle date;maturity date;fraction\n')
     #basedate = dates.date('separated',1,1,1990)
@@ -405,7 +405,7 @@ if __name__=="__main__":
     #                ai_fraction = ai_fact(method[0],str(start_date),str(settle_date),str(maturity_date), freq,str(maturity_date))
     #                f.write('%d;%d;%s;%s;%s;%f\n' % (method[1], freq, str(start_date), str(settle_date), str(maturity_date), ai_fraction))
     #f.close()
-    #freq = 2 was not defined here yet, see code above
+    freq = 2 was not defined here yet, see code above
     print('Unit test Day count rules')
     print('Examples FA for testing:')
     print('Old Eurobonds convention (30/360E)')
