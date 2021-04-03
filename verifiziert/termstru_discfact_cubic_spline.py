@@ -50,11 +50,11 @@ def term_structure_discount_factor_cubic_spline(t, b1, c1, d1, f, knots):
 def spline3_coef(t, y):
     """ Funktion nach Manual vom Kurs Cox, S. 297 """
     n = len(t) - 1
-    h = numpy.zeros((n))
-    b = numpy.zeros((n))
-    u = numpy.zeros((n))
-    v = numpy.zeros((n))
-    z = numpy.zeros((n))
+    h = numpy.zeros((n+1))
+    b = numpy.zeros((n+1))
+    u = numpy.zeros((n+1))
+    v = numpy.zeros((n+1))
+    z = numpy.zeros((n+1))
     i = 0
     if len(t)!=len(y):
         raise Exception('knot points not of equal length with values furnished!')
@@ -104,6 +104,7 @@ if __name__=='__main__':
     n = len(t) - 1
     
     z = spline3_coef(t, y)
+    
     for i in numpy.arange(-1.25,1.3,0.05):
         print('x = %1.2f,\twith cubic splines: %1.6f,\tanalytic: %1.6f' \
               % (i, spline3_eval(t,y,z,i), serpentine_curve(i)))

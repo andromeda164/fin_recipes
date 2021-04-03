@@ -23,3 +23,10 @@ import sys
 sys.path.append(r'F:\IT\TS\FinancialRecipes\Python\verifiziert')
 sys.path.append(r'F:\IT\TS\FinancialRecipes\Python\verifiziert\tests')
 
+##from cflow_irr import *
+##from cflow_irr_discrete import *
+##from cflow_irr_test_unique import *
+##from cflow_pv import *
+##from cflow_pv_discrete import *
+##from cum_normal import *
+##from normdist import *

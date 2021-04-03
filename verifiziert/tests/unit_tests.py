@@ -16,9 +16,12 @@
     literature-ref  --
 *******************************************************"""
 import pytest
-import sys
-sys.path.append(r'F:\IT\TS\FinancialRecipes\Python\verifiziert')
+import fin_recipes
 
-tested_modules = [r'..\random_normal.py']
+# manual identification
+tested_modules = [
+    r'verifiziert\tests\test_termstru_discfact_cubic_spline.py',
+    r'verifiziert\tests\test_random_normal.py']
 
-pytest.main(tested_modules)
+# automatic test discovery
+pytest.main()
