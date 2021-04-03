@@ -36,13 +36,16 @@ def random_normal():
     X1 = V1 * math.sqrt((-2.0 * math.log(S)) / S)
     return X1
 
-def random_normal_test():
+def test_random_normal():
+    # pytest unittest
     MAXINDEX = 1000000
     # run a statistical test with MAXINDEX runs
     results = numpy.zeros((MAXINDEX))
     for i in range(MAXINDEX):
         results[i] = random_normal()
+    # mean of a random normal variable should be 0
     assert round(numpy.average(results), 2) == 0.0
+    # variance of a random normal variable should be 1
     assert round(numpy.var(results), 2) == 1.0
     return
 
