@@ -13,6 +13,9 @@
 # 2to3 conversion backup files
 *.bak
 
+# backup files
+*.bak.py
+
 # documentation
 *.pdf
 *.doc
