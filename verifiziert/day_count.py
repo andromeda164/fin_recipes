@@ -130,7 +130,7 @@ def AI_Factor(daycount, D1M1Y1, D2M2Y2, D3M3Y3, F, maturity, coupon = 0.0, non_v
         raise Exception('Wrong frequency furnished: %d!' % F)
     
     # Day Count Method
-    if isinstance(daycount):
+    if isinstance(daycount, DayCount):
         DCM = daycount
     else:
         DCM = DayCount(daycount)
