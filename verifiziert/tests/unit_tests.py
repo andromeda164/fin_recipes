@@ -18,10 +18,14 @@
 import pytest
 import fin_recipes
 
-# manual identification
-#tested_modules = [
-#    r'verifiziert\tests\test_termstru_discfact_cubic_spline.py',
-#    r'verifiziert\tests\test_random_normal.py']
+test_single_module = True
+max_errors = 10     # number errors before stopping
+
+# manual identification of single modules
+if test_single_module:
+    argument_list = ['maxfail', max_errors, r'verifiziert\tests\test_day_count.py']
+else:
+    argument_list = ['maxfail', max_errors]
 
 # automatic test discovery
-pytest.main()
+pytest.main(argument_list)
