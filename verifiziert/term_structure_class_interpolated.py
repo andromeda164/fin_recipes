@@ -44,7 +44,7 @@ class term_structure_class_interpolated(term_structure_class):
         term_structure_class.__init__(self)
         self.__clear()
         if len(in_times)!=len(in_yields):
-            raise Exception, 'Cash flow times do not match with number of amounts in term_structure_class_interpolated!'
+            raise Exception('Cash flow times do not match with number of amounts in term_structure_class_interpolated!')
         self.times_= in_times
         self.yields_= in_yields
         pass
@@ -67,24 +67,24 @@ class term_structure_class_interpolated(term_structure_class):
         """ Alternative zum Konstruktor der Klasse """
         self.__clear()
         if len(in_times)!=len(in_yields):
-            raise Exception, 'Cash flow times do not match with number of amounts in term_structure_class_interpolated!'
+            raise Exception('Cash flow times do not match with number of amounts in term_structure_class_interpolated!')
         self.times_= in_times
         self.yields_= in_yields
         pass
 
 if __name__=='__main__':
     # Testing
-    print 'Test program for the calculations'
-    print 'See p. 43 of manual for results.'
+    print('Test program for the calculations')
+    print('See p. 43 of manual for results.')
     in_times = [0.1, 1.0, 5.0]
     in_yields =  [0.05, 0.07, 0.08]
     ts = term_structure_class_interpolated(in_times, in_yields)
     t1 = 1.0
     t2 = 2.0
-    print 'Discount factor at t1 = %1.1f: %1.6f with spot rate of %1.4f' \
-          % (t1, ts.discount_factor(t1), ts.Yield(t1))
-    print 'Discount factor at t2 = %1.1f: %1.6f with spot rate of %1.4f' \
-          % (t2, ts.discount_factor(t2), ts.Yield(t2))
-    print 'The corresponding forward rate from t1 = %1.1f to t2 = %1.1f is %1.6f' \
-          % (t1, t2, ts.forward_rate(t1, t2))
+    print('Discount factor at t1 = %1.1f: %1.6f with spot rate of %1.4f' \
+          % (t1, ts.discount_factor(t1), ts.Yield(t1)))
+    print('Discount factor at t2 = %1.1f: %1.6f with spot rate of %1.4f' \
+          % (t2, ts.discount_factor(t2), ts.Yield(t2)))
+    print('The corresponding forward rate from t1 = %1.1f to t2 = %1.1f is %1.6f' \
+          % (t1, t2, ts.forward_rate(t1, t2)))
     

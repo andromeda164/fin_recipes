@@ -98,7 +98,7 @@ def derivative_price_simulate_european_option_generic( \
            
 
 if __name__=="__main__":
-    print 'Testing arithmetic Asian Options'
+    print('Testing arithmetic Asian Options')
     import payoff_average
     numtrials = 10000
     numsteps = 200
@@ -115,14 +115,14 @@ if __name__=="__main__":
         derivative_price_simulate_european_option_generic( \
             S, X, r, sigma, time, payoff_average.payoff_arithmetric_average_call, \
             numsteps, numtrials)
-    print 'Underlying is %5.2f. Strike is %5.2f.' \
-          % (S, X)
-    print 'Volatility (annualized) is %4.2f percent. Simulation over %4.2f years.' \
-          % (sigma*100.0, time)
-    print 'The value is %6.4f. Derivagem (Hull) value is %6.4f. Diff: %3.2f perc. OK.' % (value, 7.0685, (value-7.0685)/7.0685*100.0)
-    print 'The Delta is %5.6f. Derivagem (Hull) is %5.6f. Diff: %3.2f perc. OK.' % (delta, 0.6543, (delta-0.6543)/0.6543*100.0)
-    print 'The Gamma is %5.6f. Derivagem (Hull) is %5.6f. Diff: %3.2f perc. OK.' % (gamma, 0.02876123, (gamma-0.02876123)/0.02876123*100.0)
-    print 'The Vega is %5.6f/perc. Derivagem (Hull) is %5.6f. Diff: %3.2f perc. OK.' % (vega/100.0, 0.19880408, (vega/100.0-0.19880408)/0.19880408*100.0)
-    print 'The Rho is %5.6f/perc. Derivagem (Hull) is %5.6f. Diff: %3.2f perc. OK.' % (rho/100.0, 0.26849895, (rho/100.0-0.26849895)/0.26849895*100.0)
-    print 'Bloomberg Vega is ~0.25 !!!. Derivagem vega seems to be slightly wrong!'
+    print('Underlying is %5.2f. Strike is %5.2f.' \
+          % (S, X))
+    print('Volatility (annualized) is %4.2f percent. Simulation over %4.2f years.' \
+          % (sigma*100.0, time))
+    print('The value is %6.4f. Derivagem (Hull) value is %6.4f. Diff: %3.2f perc. OK.' % (value, 7.0685, (value-7.0685)/7.0685*100.0))
+    print('The Delta is %5.6f. Derivagem (Hull) is %5.6f. Diff: %3.2f perc. OK.' % (delta, 0.6543, (delta-0.6543)/0.6543*100.0))
+    print('The Gamma is %5.6f. Derivagem (Hull) is %5.6f. Diff: %3.2f perc. OK.' % (gamma, 0.02876123, (gamma-0.02876123)/0.02876123*100.0))
+    print('The Vega is %5.6f/perc. Derivagem (Hull) is %5.6f. Diff: %3.2f perc. OK.' % (vega/100.0, 0.19880408, (vega/100.0-0.19880408)/0.19880408*100.0))
+    print('The Rho is %5.6f/perc. Derivagem (Hull) is %5.6f. Diff: %3.2f perc. OK.' % (rho/100.0, 0.26849895, (rho/100.0-0.26849895)/0.26849895*100.0))
+    print('Bloomberg Vega is ~0.25 !!!. Derivagem vega seems to be slightly wrong!')
 #    print 'The Theta is %5.6f/perc. Derivagem (Hull) is %5.6f. Diff: %3.2f perc. OK.' % (theta, 0.0, 0.0)

@@ -35,6 +35,7 @@
     Literatur       --          
 *******************************************************"""
 import math, random
+from functools import reduce
 
 def simulate_lognormally_distributed_sequence(S, r, sigma, time, no_steps):
     prices = []
@@ -129,7 +130,7 @@ def simulate_lognormally_distributed_sequence_with_greeks_and_randoms( \
            vega_prices, rho_prices
 
 if __name__=="__main__":
-    print 'Testing of random Log-normal-distributed Series'
+    print('Testing of random Log-normal-distributed Series')
     def add(a,b): return a+b
     numsteps = 200
     numtrials = 10000
@@ -147,17 +148,17 @@ if __name__=="__main__":
     mean = float(reduce(add,values)) / float(len(values))
     for ele in values:
         cumsum += (ele - mean) ** 2.0
-    print 'Testing a simulation path, starting at %4.2f, growing at %4.2f percent/y.' % (S, r*100.0)
-    print 'Volatility (annualized) is %4.2f percent. Simulation over %4.2f years.' \
-          % (sigma*100.0, time)
-    print 'The mean is %5.4f. At theoretical growth should be %5.4f.' \
-          % (mean, S*math.exp(r*time))
-    print 'The standard-deviation, calculated from %d samples is %6.4f.' \
-          % (numtrials, math.sqrt(cumsum / (float(numtrials - 1))))
-    print
+    print('Testing a simulation path, starting at %4.2f, growing at %4.2f percent/y.' % (S, r*100.0))
+    print('Volatility (annualized) is %4.2f percent. Simulation over %4.2f years.' \
+          % (sigma*100.0, time))
+    print('The mean is %5.4f. At theoretical growth should be %5.4f.' \
+          % (mean, S*math.exp(r*time)))
+    print('The standard-deviation, calculated from %d samples is %6.4f.' \
+          % (numtrials, math.sqrt(cumsum / (float(numtrials - 1)))))
+    print()
 
     
-    print 'Testing of greek series produced'
+    print('Testing of greek series produced')
     delta = 0.01
     vega = 0.01
     rho = 0.01
@@ -183,12 +184,12 @@ if __name__=="__main__":
     for ele in values: cumsum += (ele - mean) ** 2.0
     for ele in values_vega: cumsum_vega += (ele - mean_vega) ** 2.0
     #for ele in values_rho: cumsum_rho += (ele - mean_rho) ** 2.0
-    print 'Testing the simulation path, starting at %4.2f, growing at %4.2f percent/y.' % (S, r*100.0)
-    print 'Volatility (annualized) is %4.2f percent. Simulation over %4.2f years.' \
-          % (sigma*100.0, time)
-    print 'The mean is %5.4f. At theoretical growth should be %5.4f.' \
-          % (mean, S*math.exp(r*time))
-    print 'The standard-deviation, calculated from %d samples is %6.4f.' \
-          % (numtrials, math.sqrt(cumsum / (float(numtrials - 1))))
-    print 'Vega mean is %5.4f. Std dev is %6.5f.' \
-          % (mean_vega, math.sqrt(cumsum_vega / (float(numtrials - 1)))) 
+    print('Testing the simulation path, starting at %4.2f, growing at %4.2f percent/y.' % (S, r*100.0))
+    print('Volatility (annualized) is %4.2f percent. Simulation over %4.2f years.' \
+          % (sigma*100.0, time))
+    print('The mean is %5.4f. At theoretical growth should be %5.4f.' \
+          % (mean, S*math.exp(r*time)))
+    print('The standard-deviation, calculated from %d samples is %6.4f.' \
+          % (numtrials, math.sqrt(cumsum / (float(numtrials - 1)))))
+    print('Vega mean is %5.4f. Std dev is %6.5f.' \
+          % (mean_vega, math.sqrt(cumsum_vega / (float(numtrials - 1))))) 

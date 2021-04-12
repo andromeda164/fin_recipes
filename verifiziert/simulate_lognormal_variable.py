@@ -35,7 +35,7 @@ def simulate_lognormal_random_variable(S,r, sigma, time):
 
 
 if __name__=="__main__":
-    print 'Testing of random Log-normal-distributed Series'
+    print('Testing of random Log-normal-distributed Series')
     numtrials = 10000
     numsteps = 1000
     S = 100.0
@@ -55,11 +55,11 @@ if __name__=="__main__":
     mean = sum(values) / len(values)
     for ele in values:
         cumsum += (ele - mean) ** 2.0
-    print 'Testing a simulation path, starting at %4.2f, growing at %4.2f percent/y.' % (S, r*100.0)
-    print 'Volatility (annualized) is %4.2f percent. Simulation over %4.2f years.' \
-          % (sigma*100.0, time*numsteps)
-    print 'The mean is %5.4f. At theoretical growth should be %5.4f.' \
-          % (mean, S*math.exp(r*time*numsteps))
-    print 'The standard-deviation, calculated from %d samples is %6.4f.' \
-          % (numtrials, math.sqrt(cumsum / (float(numtrials - 1))))
+    print('Testing a simulation path, starting at %4.2f, growing at %4.2f percent/y.' % (S, r*100.0))
+    print('Volatility (annualized) is %4.2f percent. Simulation over %4.2f years.' \
+          % (sigma*100.0, time*numsteps))
+    print('The mean is %5.4f. At theoretical growth should be %5.4f.' \
+          % (mean, S*math.exp(r*time*numsteps)))
+    print('The standard-deviation, calculated from %d samples is %6.4f.' \
+          % (numtrials, math.sqrt(cumsum / (float(numtrials - 1)))))
 
