@@ -73,13 +73,13 @@ def derivative_price_simulate_european_option_generic( \
     theta_value = 0.0
     for n in range(no_sims):
         prices, delta_pos_prices, delta_neg_prices, vega_prices, rho_prices = \
-                simulate_lognormally_distributed_sequence_with_greeks(S,r,sigma,time,no_steps,delta,vega,rho)
+            simulate_lognormally_distributed_sequence_with_greeks(S,r,sigma,time,no_steps,delta,vega,rho)
         sum_payoffs += payoff(prices,X)
         sum_delta_pos_payoffs += payoff(delta_pos_prices,X)
         sum_delta_neg_payoffs += payoff(delta_neg_prices,X)
         sum_vega_payoffs += payoff(vega_prices,X)
         sum_rho_payoffs += payoff(rho_prices,X)
-	sum_theta_payoffs += payoff(prices[0:len(prices)-1],X)
+    sum_theta_payoffs += payoff(prices[0:len(prices)-1],X)
     
     value = math.exp(-r*time) * (sum_payoffs/float(no_sims))
     delta_pos_value = math.exp(-r*time) * (sum_delta_pos_payoffs/float(no_sims))
