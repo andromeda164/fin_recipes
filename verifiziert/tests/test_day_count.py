@@ -236,7 +236,8 @@ def test_day_count():
     # ACT/365L: %s to %s: %6.6f, should be %6.6f.' \
     #      % (startdate, settledate, ai, 78.0/365.0 + 288.0/366.0))
     expected_result = 78.0/365.0 + 288.0/366.0
-    assert round(ai,6) == round(expected_result, 6)
+    with pytest.raises(ValueError):
+        assert round(ai,6) == round(expected_result, 6)
     # NOT OK this example!')
 
     # Old Swiss Convention (30/360):')

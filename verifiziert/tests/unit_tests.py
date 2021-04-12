@@ -23,7 +23,7 @@ max_errors = 10     # number errors before stopping
 
 # manual identification of single modules
 if test_single_module:
-    argument_list = ['maxfail', max_errors, r'verifiziert\tests\test_day_count.py']
+    argument_list = [r'verifiziert\tests\test_day_count.py']
 else:
     argument_list = ['maxfail', max_errors]
 
