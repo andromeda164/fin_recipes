@@ -36,8 +36,8 @@
                                 Preis, verifiziert mit Hull
 *******************************************************"""
 import math
-import finrecipes.black_scholes_call
-import finrecipes.black_scholes_put
+from finrecipes import black_scholes_call
+from finrecipes import black_scholes_put
 
 def option_price_implied_volatility_call_black_scholes_bisections( \
                 S, X, r, time, option_price):
@@ -60,19 +60,19 @@ def option_price_implied_volatility_call_black_scholes_bisections( \
     # want to bracket sigma. first find a maximum sigma by finding a sigma
     # with a estimated price higher than the actual price.
     sigma_high = 0.3
-    price = finrecipes.black_scholes_call.option_price_call_black_scholes( \
+    price = black_scholes_call.option_price_call_black_scholes( \
                                             S,X,r,sigma_high,time)
     while price < option_price:
         # keep doubling.
         sigma_high = 2.0 * sigma_high 
-        price = finrecipes.black_scholes_call.option_price_call_black_scholes( \
+        price = black_scholes_call.option_price_call_black_scholes( \
                                                 S,X,r,sigma_high,time)
         if sigma_high>HIGH_VALUE:
             # panic, something wrong.
             return ERROR
     for i in range(MAX_ITERATIONS):
         sigma = (sigma_low+sigma_high)*0.5
-        price = finrecipes.black_scholes_call.option_price_call_black_scholes( \
+        price = black_scholes_call.option_price_call_black_scholes( \
                                                     S,X,r,sigma,time)
         test =  (price-option_price)
         if abs(test)<ACCURACY: return sigma
@@ -84,7 +84,7 @@ def option_price_implied_volatility_put_black_scholes_bisections( \
             S, X, r, time, option_price):
     # check for arbitrage violations: 
     sigma_low = 0.0001
-    price = finrecipes.black_scholes_put.option_price_put_black_scholes( \
+    price = black_scholes_put.option_price_put_black_scholes( \
                                             S,X,r,sigma_low,time)
     if price>option_price:
         # if price at almost zero volatility greater than price, return 0
@@ -101,19 +101,19 @@ def option_price_implied_volatility_put_black_scholes_bisections( \
     # want to bracket sigma. first find a maximum sigma by finding a sigma
     # with a estimated price higher than the actual price.
     sigma_high = 0.3
-    price = finrecipes.black_scholes_put.option_price_put_black_scholes( \
+    price = black_scholes_put.option_price_put_black_scholes( \
                                             S,X,r,sigma_high,time)
     while price < option_price:
         # keep doubling.
         sigma_high = 2.0 * sigma_high 
-        price = finrecipes.black_scholes_put.option_price_put_black_scholes( \
+        price = black_scholes_put.option_price_put_black_scholes( \
                                                 S,X,r,sigma_high,time)
         if sigma_high>HIGH_VALUE:
             # panic, something wrong.
             return ERROR
     for i in range(MAX_ITERATIONS):
         sigma = (sigma_low+sigma_high)*0.5
-        price = finrecipes.black_scholes_put.option_price_put_black_scholes( \
+        price = black_scholes_put.option_price_put_black_scholes( \
                                                     S,X,r,sigma,time)
         test =  (price-option_price)
         if abs(test)<ACCURACY: return sigma
