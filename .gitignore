@@ -21,3 +21,8 @@
 *.doc
 *.docx
 
+# to do, to terminate, obsolete
+.\obsolete\*.*
+.\zu tun\*.*
+.\zu beenden\*.*
+
