@@ -16,7 +16,7 @@
     literature-ref  --
 *******************************************************"""
 import pytest
-from finrecipes.currency_amount import *
+from finrecipes import currency_amount, calendars
 
 
 def test_currency_amount():
