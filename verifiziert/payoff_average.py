@@ -82,6 +82,6 @@ if __name__=='__main__':
     value = payoff_bermudan_arithmetic_average_call(sampling_indexes, prices, X)
     print('This is the same as the payoff without scale times the scale (%5.3f).' % (value*scale))
 
-    value = payoff_bermudan_arithmetic_average_call_single_asset( \
-        sampling_indexes, prices, fx_rates, X*10.0)
-    print('The bermudan payoff for the sampling indexes %s \nwith the values %s is %5.3f' % (sampling_indexes, sampling_values, value))
+    # value = payoff_bermudan_arithmetic_average_call_single_asset( \
+    #    sampling_indexes, prices, fx_rates, X*10.0)
+    # print('The bermudan payoff for the sampling indexes %s \nwith the values %s is %5.3f' % (sampling_indexes, sampling_values, value))

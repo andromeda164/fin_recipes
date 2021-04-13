@@ -144,8 +144,10 @@ class currency_amount(currency.currency):
     def __int__(self):
         return int(self.amount())
 
-    def __long__(self):
-        return long(self.amount())
+    # 13/04/2021 Python 3 conversion: __long__/long as a datatype 
+    # does not exist anymore, use int with full precision
+    #def __long__(self):
+    #    return long(self.amount())
 
     def __float__(self):
         return float(self.amount())
