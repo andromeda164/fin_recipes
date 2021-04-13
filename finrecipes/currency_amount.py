@@ -20,10 +20,10 @@
     Literatur-Ref   --
 *******************************************************"""
 import math
-from finrecipes.currency import *
+from finrecipes import currency
 from finrecipes import calendars
 
-class currency_amount(currency.currency):
+class currency_amount(currency):
     """ Class for modelling an amount of a specific currency."""
     def __init__(self, amount, ISOCode, name, calendar = calendars.CHF(),
                  minDecimalPositionExponent = 2, minRoundingUnit = 5):
