@@ -17,6 +17,7 @@
 *******************************************************"""
 import pytest
 from finrecipes.dates import *
+from finrecipes import calendars
 
 
 def test_dates():
