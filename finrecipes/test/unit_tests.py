@@ -15,17 +15,19 @@
     pytest          OK
     literature-ref  --
 *******************************************************"""
+import sys 
+sys.path.append(r'..\..')
 import pytest
 import finrecipes
 
-test_single_module = True
+test_single_module = False
 max_errors = 10     # number errors before stopping
 
 # manual identification of single modules
 if test_single_module:
-    argument_list = [r'test_day_count.py']
+    argument_list = [r'test_currency_amount.py']
 else:
-    argument_list = ['maxfail', max_errors]
+    argument_list = []
 
 # automatic test discovery
 pytest.main(argument_list)

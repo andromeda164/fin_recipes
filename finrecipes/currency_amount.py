@@ -19,11 +19,13 @@
     Testprogramm    OK
     Literatur-Ref   --
 *******************************************************"""
+import sys
+sys.path.append('..')
 import math
 from finrecipes import currency
 from finrecipes import calendars
 
-class currency_amount(currency):
+class currency_amount(currency.currency):
     """ Class for modelling an amount of a specific currency."""
     def __init__(self, amount, ISOCode, name, calendar = calendars.CHF(),
                  minDecimalPositionExponent = 2, minRoundingUnit = 5):
@@ -79,7 +81,7 @@ class currency_amount(currency):
                                self.minDecimalPositionExponent(), \
                                self.minRoundingUnit())
 
-    def __div__(self, other):
+    def __truediv__(self, other):
         if self.ISOCode()!=other.ISOCode():
             raise ValueError('Amounts of different currencies cannot be divided!')
         result = self.amount() / other.amount()
@@ -189,7 +191,7 @@ class currency_amount(currency):
                                self.minDecimalPositionExponent(), \
                                self.minRoundingUnit())
 
-    def __rdiv__(self, other):
+    def __rtruediv__(self, other):
         result = other / self.amount()
         return currency_amount(result, self.ISOCode(), self.name(), \
                                self.calendar(), \
@@ -222,27 +224,27 @@ class currency_amount(currency):
     def __repr__(self): return 'Currency amount %f in currency %s.' % (self.__amount, self.ISOCode())
 
 
-if __name__=="__main__":
-    print('Test for class currency_amount')
-    print('------------------------------')
-    amounts = [1.265, 0.023, 24.99, 25.1, 99.1, 997.75]
-    print()
-    print('Rounding test')
-    print()
-    for amount in amounts:
-        print('Testing amount of %f' % amount)
-        CHF = currency_amount(amount, 'CHF', 'Swiss Franc', calendars.CHF(), 2, 5)
-        EUR = currency_amount(amount, 'EUR', 'Euro', calendars.TARGET(), 2, 1)
-        USD = currency_amount(amount, 'USD', 'US Dollar', calendars.USD(), 2, 1)
-        ITL = currency_amount(amount, 'ITL', 'Lire Italiane', calendars.TARGET(), -1, 5)
-        if CHF!=0.0:
-            print(float(CHF), CHF+CHF, CHF-CHF, CHF*CHF, CHF/CHF, CHF//CHF, CHF%CHF)
-        if EUR!=0.0:
-            print(float(EUR), EUR+EUR, EUR-EUR, EUR*EUR, EUR/EUR, EUR//EUR, EUR%EUR)
-        if USD!=0.0:
-            print(float(USD), USD+USD, USD-USD, USD*USD, USD/USD, USD//USD, USD%USD)
-        if ITL!=0.0:
-            print(float(ITL), ITL+ITL, ITL-ITL, ITL*ITL, ITL/ITL, ITL//ITL, ITL%ITL)
-        print()
-    print('OK')
+##if __name__=="__main__":
+##    print('Test for class currency_amount')
+##    print('------------------------------')
+##    amounts = [1.265, 0.023, 24.99, 25.1, 99.1, 997.75]
+##    print()
+##    print('Rounding test')
+##    print()
+##    for amount in amounts:
+##        print('Testing amount of %f' % amount)
+##        CHF = currency_amount(amount, 'CHF', 'Swiss Franc', calendars.CHF(), 2, 5)
+##        EUR = currency_amount(amount, 'EUR', 'Euro', calendars.TARGET(), 2, 1)
+##        USD = currency_amount(amount, 'USD', 'US Dollar', calendars.USD(), 2, 1)
+##        ITL = currency_amount(amount, 'ITL', 'Lire Italiane', calendars.TARGET(), -1, 5)
+##        if CHF.amount()!=0.0:
+##            print(float(CHF), CHF+CHF, CHF-CHF, CHF*CHF, CHF/CHF, CHF//CHF, CHF%CHF)
+##        if EUR.amount()!=0.0:
+##            print(float(EUR), EUR+EUR, EUR-EUR, EUR*EUR, EUR/EUR, EUR//EUR, EUR%EUR)
+##        if USD.amount()!=0.0:
+##            print(float(USD), USD+USD, USD-USD, USD*USD, USD/USD, USD//USD, USD%USD)
+##        if ITL.amount()!=0.0:
+##            print(float(ITL), ITL+ITL, ITL-ITL, ITL*ITL, ITL/ITL, ITL//ITL, ITL%ITL)
+##        print()
+##    print('OK')
 
