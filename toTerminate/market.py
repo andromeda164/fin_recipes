@@ -57,38 +57,38 @@ class market:
     """ Klasse zur Beschreibung eines market. """
     def __init__(self, name, cals, Type, openingHour, closingHour, timezone = 'Europe/Zurich', SundayOpeningHour = 0.0):
         if type(name) != type(''):
-            raise TypeError, 'Wrong argument type used in name argument (must be a string)!'
+            raise TypeError('Wrong argument type used in name argument (must be a string)!')
         self.name = name
         
         if type(timezone) != type(''):
-            raise TypeError, 'Wrong argument type used in timezone argument (must be a string)!'
+            raise TypeError('Wrong argument type used in timezone argument (must be a string)!')
         self.timezone = timezone
 
         if cals == None:
             cals = [calendars.CHF()]
         for calendar in cals:
             if not isinstance(calendar,calendars.calendar):
-                raise TypeError, 'Wrong argument type used in calendar argument (object of type calendars.calendar)!'
+                raise TypeError('Wrong argument type used in calendar argument (object of type calendars.calendar)!')
         self.calendar = cals
 
         if Type not in ['normal','Forex', 'Forex w/o weekends','GLOBEX']:
-            raise TypeError, 'Wrong argument used in Type argument (must be one of [normal, Forex, Forex w/o weekends,GLOBEX])!'
+            raise TypeError('Wrong argument used in Type argument (must be one of [normal, Forex, Forex w/o weekends,GLOBEX])!')
         self.Type = Type
 
         try:
             self.openingHour = float(openingHour)
         except:
-            raise TypeError, 'Wrong argument type used in openingHour argument (must be numeric)!'
+            raise TypeError('Wrong argument type used in openingHour argument (must be numeric)!')
 
         try:
             self.closingHour = float(closingHour)
         except:
-            raise TypeError, 'Wrong argument type used in closingHour argument (must be numeric)!'
+            raise TypeError('Wrong argument type used in closingHour argument (must be numeric)!')
 
         try:
             self.SundayOpeningHour = float(SundayOpeningHour)
         except:
-            raise TypeError, 'Wrong argument type used in SundayOpeningHour argument (must be numeric)!'
+            raise TypeError('Wrong argument type used in SundayOpeningHour argument (must be numeric)!')
         pass
 
     def __str__(self):
@@ -98,7 +98,7 @@ class market:
         """ gibt True zurueck, falls das Argument timestamp waehrend den
             Geschaeftzeiten liegt. """
         if not isinstance(timestamp, datetime.date):
-            raise Exception, 'Invalid date furnished in is_businessday(%s)!' % str(timestamp)
+            raise Exception('Invalid date furnished in is_businessday(%s)!' % str(timestamp))
         datum = dates.date('PythonDate', timestamp)
         openingtime = datetime.datetime(timestamp.year,timestamp.month,timestamp.day, \
                 int(self.openingHour),int((self.openingHour - float(int(self.openingHour)))/100.0*60.0),0)
@@ -167,7 +167,7 @@ if __name__ == "__main__":
     import unittest
     import sys
 
-    print 'Unittesting of class market'
+    print('Unittesting of class market')
     class CalendarTestUSD(unittest.TestCase):
         def setUp(self):
             self.knownValues = [ \
@@ -216,7 +216,7 @@ if __name__ == "__main__":
             name = 'Normal Market'
             cal1 = calendars.CHF()
             cal2 = calendars.USD()
-            print len(cal1.holidays())
+            print(len(cal1.holidays()))
             cals = [cal1, cal2]
             Type = 'normal'
             openingHour = 8.25
@@ -228,13 +228,13 @@ if __name__ == "__main__":
             delta = datetime.timedelta(minutes=5)
             run = start
             testHolidays = []
-            print len(cals)
+            print(len(cals))
             for cal in cals:
-                print len(cal.holidays())
+                print(len(cal.holidays()))
                 l = [holi for holi in cal.holidays()]
                 testHolidays.extend(l)
             testHolidays = testHolidays.sort()
-            print len(testHolidays)
+            print(len(testHolidays))
             while run < end:
                 isHoliday = False
                 isBusinessHour = True
@@ -362,6 +362,6 @@ if __name__ == "__main__":
     suite.addTest(marketTestNormalMarket("testNormalMarket"))
     result = unittest.TextTestRunner(stream=sys.stdout, verbosity=2).run(suite)
     if result.wasSuccessful():
-        print 'Unittest properly executed with %d tests, %d failed.' % (result.testsRun, len(result.failures))
+        print('Unittest properly executed with %d tests, %d failed.' % (result.testsRun, len(result.failures)))
     else:
-        print 'Unittest failed: %d failures, %d errors!' % (len(result.failures),len(result.errors))
+        print('Unittest failed: %d failures, %d errors!' % (len(result.failures),len(result.errors)))

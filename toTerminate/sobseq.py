@@ -28,24 +28,24 @@ MAXDIM = 6
 def sobseq(n, x):
     'returns the Sobol quasi-random number sequence x[1,.. n] for n dimensions.'
     j, k, l = 0, 0 ,0
-    i, im, ipp = 0L, 0L, 0L
+    i, im, ipp = 0, 0, 0
     fac = 0.0
-    _in = 0L
-    ix = [0L for _x in range(MAXDIM+1)]
-    iu = [0L for _x in range(MAXBIT+1)]
-    mdeg = [0L, 1L, 2L, 3L, 3L, 4L, 4L]
-    ip = [0L, 0L, 1L, 2L, 1L, 4L]
+    _in = 0
+    ix = [0 for _x in range(MAXDIM+1)]
+    iu = [0 for _x in range(MAXBIT+1)]
+    mdeg = [0, 1, 2, 3, 3, 4, 4]
+    ip = [0, 0, 1, 2, 1, 4]
     iv = [0] * (MAXBIT*MAXDIM+1)
     iv[0:25] = [0,1,1,1,1,1,1,3,1,3,3,1,1,5,7,7,3,3,5,15,11,5,15,13,9]
 
     if n<0:
         # Initialize, don't return a record
         for k in range(1,MAXDIM+1):
-            ix[k] = 0L
-        _in = 0L
+            ix[k] = 0
+        _in = 0
         if iv[1] != 1:
             return
-        fac = 1.0 / (1L << MAXBIT)
+        fac = 1.0 / (1 << MAXBIT)
         k = 0
         j = 1
         while j<=MAXBIT:
@@ -71,7 +71,7 @@ def sobseq(n, x):
         for j in range(1, MAXBIT+1):
             if not (im & 1): break
             im >>= 1
-        if j > MAXBIT: raise 'MAXBIT too small in sobseq!'
+        if j > MAXBIT: raise Exception('MAXBIT too small in sobseq!')
         im = (j-1)*MAXDIM
         for k in range(1, min(n, MAXDIM)+1):
             ix[k] ^= iv[im+k]
@@ -82,5 +82,5 @@ if __name__=='__main__':
     length = 10
     l = [0.0]*dimension
     sobseq(-1, l)
-    print sobseq(dimension, l)
-    print sobseq
+    print(sobseq(dimension, l))
+    print(sobseq)

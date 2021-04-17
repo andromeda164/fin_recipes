@@ -41,7 +41,7 @@ def futures_option_price_put_american_binomial(F, X, r, sigma, time, no_steps):
     uInv = 1.0 / u
     pUp = (1-d)/(u-d)
     pDown = 1.0 - pUp
-    print futures_prices, put_values, t_delta
+    print(futures_prices, put_values, t_delta)
     futures_prices[0] = F*math.pow(d, no_steps)
     for i in range(1, no_steps+1):
         # terminal tree nodes
@@ -57,9 +57,9 @@ def futures_option_price_put_american_binomial(F, X, r, sigma, time, no_steps):
 
 if __name__=="__main__":
     # Test
-    print 'Test for Black&Scholes formula'
-    print 'Price for an American Put Option on a Futures (p. 92 manual).'
-    print
+    print('Test for Black&Scholes formula')
+    print('Price for an American Put Option on a Futures (p. 92 manual).')
+    print()
     F = 50.0
     K = 50.0
     r = 0.08
@@ -69,6 +69,6 @@ if __name__=="__main__":
     style = 'american'
     type = 'put'
     value = futures_option_price_put_american_binomial(F, K, r, sigma, time, no_steps)
-    print 'The result should be according to DerivaGem: %6.5f.' % (2.81058961)
-    print 'The theoretical price for a %s %s option with strike %4.2f is: %6.5f' \
-          % (style, type, K, value) 
+    print('The result should be according to DerivaGem: %6.5f.' % (2.81058961))
+    print('The theoretical price for a %s %s option with strike %4.2f is: %6.5f' \
+          % (style, type, K, value)) 

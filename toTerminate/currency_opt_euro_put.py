@@ -51,22 +51,22 @@ if __name__=="__main__":
     time = 0.5
     target_horizon = 0.25
     price = -currency_option_price_put_european(S,X,r,r_f,sigma,time)
-    print 'Simulation of results - European FX Option'
-    print '------------------------------------------'
-    print 'Initial premium %d' % int(price*nominale)
-    print '\t',
+    print('Simulation of results - European FX Option')
+    print('------------------------------------------')
+    print('Initial premium %d' % int(price*nominale))
+    print('\t', end=' ')
     for sigma in sigmas:
-        print '%1.3f\t' % sigma ,
-    print '\n',
-    print '-------------------------------------------------------------------------------------'
+        print('%1.3f\t' % sigma, end=' ')
+    print('\n', end=' ')
+    print('-------------------------------------------------------------------------------------')
     for target in targets:
-        print '%1.4f\t' % target ,
+        print('%1.4f\t' % target, end=' ')
         for sigma in sigmas:
             target_price = -currency_option_price_put_european(target,X,r,r_f,sigma,target_horizon)
             payout = max(nominale * (X-target), 0)
-            print str(int((price-target_price)*nominale + payout))+'\t' ,
-        print '\n',
-    print '\n',
+            print(str(int((price-target_price)*nominale + payout))+'\t', end=' ')
+        print('\n', end=' ')
+    print('\n', end=' ')
     #print int(price*nominale), int(target_price*nominale), int(nominale * (Xs-target)), int((price-target_price)*nominale + nominale * (X-target))
 
 
@@ -84,21 +84,21 @@ if __name__=="__main__":
     time = 1.0
     target_horizon = 0.25
     price = -currency_option_price_put_european(S,X,r,r_f,sigma,time)
-    print 'Simulation of results - European FX Option %d %s/%s' % (nominale, base, counter)
-    print '------------------------------------------'
-    print
-    print 'Initial premium %d %s - %d %s' % (int(price*nominale), counter, int(price*nominale/S), base)
-    print '\t',
+    print('Simulation of results - European FX Option %d %s/%s' % (nominale, base, counter))
+    print('------------------------------------------')
+    print()
+    print('Initial premium %d %s - %d %s' % (int(price*nominale), counter, int(price*nominale/S), base))
+    print('\t', end=' ')
     for sigma in sigmas:
-        print '%1.3f\t' % sigma ,
-    print '\n',
-    print '-------------------------------------------------------------------------------------'
+        print('%1.3f\t' % sigma, end=' ')
+    print('\n', end=' ')
+    print('-------------------------------------------------------------------------------------')
     for target in targets:
-        print '%1.2f\t' % target ,
+        print('%1.2f\t' % target, end=' ')
         for sigma in sigmas:
             target_price = -currency_option_price_put_european(target,X,r,r_f,sigma,target_horizon)
             payout = max(nominale * (X-target), 0)
-            print str(int(((price-target_price)*nominale + payout)/S))+'\t' ,
-        print '\n',
-    print '\n',
+            print(str(int(((price-target_price)*nominale + payout)/S))+'\t', end=' ')
+        print('\n', end=' ')
+    print('\n', end=' ')
     #print int(price*nominale), int(target_price*nominale), int(nominale * (Xs-target)), int((price-target_price)*nominale + nominale * (X-target))

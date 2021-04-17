@@ -55,9 +55,9 @@ def option_price_put_american_binomial(S, X, r, sigma, t, steps):
     p_up = (R-d)/(u-d)
     p_down = 1.0-p_up
     if DEBUG and 0:
-        print 'u: %6.5f, d: %6.5f' % (u, d)
-        print 'p: %6.5f, (1-p): %6.5f' % (p_up, p_down)
-        print 'R: %6.5f, Rinv: %6.5f' % (R, Rinv)
+        print('u: %6.5f, d: %6.5f' % (u, d))
+        print('p: %6.5f, (1-p): %6.5f' % (p_up, p_down))
+        print('R: %6.5f, Rinv: %6.5f' % (R, Rinv))
     # price of underlying
     prices = [0.0 for j in range(steps+1)]
     # fill in the endnodes.
@@ -85,8 +85,8 @@ def option_price_put_american_binomial(S, X, r, sigma, t, steps):
 if __name__=="__main__":
     DEBUG = 1
     from anal_price_am_put_div import *
-    print 'Test for function option_price_put_american_binomial.'
-    print
+    print('Test for function option_price_put_american_binomial.')
+    print()
     no_steps = 10
     S = 100.0
     X = 100.0
@@ -94,18 +94,18 @@ if __name__=="__main__":
     sigma = 0.2
     t = 1.0
     D1 = 0.0
-    print 'TO DO...'
-    print 'TO DO...'
-    print 'TO DO...'
-    print 'TO DO...'
-    print 'comparison of accuracy for different strikes.'
+    print('TO DO...')
+    print('TO DO...')
+    print('TO DO...')
+    print('TO DO...')
+    print('comparison of accuracy for different strikes.')
     for K in range(X-20.0,X+21.0,5.0):
-        print 'Strike price %3.1f:' % (K)
+        print('Strike price %3.1f:' % (K))
         bs_value = option_price_american_call_one_dividend(S,K,r,sigma,t,D1,t)
         for steps in range(5,201,5):
             value = option_price_call_american_binomial(S, K, r, sigma, t, steps)
-            print 'Cox-Ross Tree with %d nodes: %9.6f, analytically %9.6f. Accuracy %1.6f percent.' \
-                  % (steps, value, bs_value, (value-bs_value)/bs_value*100.0)
-        print
-        print
+            print('Cox-Ross Tree with %d nodes: %9.6f, analytically %9.6f. Accuracy %1.6f percent.' \
+                  % (steps, value, bs_value, (value-bs_value)/bs_value*100.0))
+        print()
+        print()
 

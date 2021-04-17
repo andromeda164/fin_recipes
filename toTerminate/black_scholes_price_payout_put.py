@@ -45,7 +45,7 @@ def option_price_european_put_payout(S, K, r, q, sigma, time):
     return put_price
 
 if __name__=="__main__":
-    print 'Test of Put-Option - european style with continuous dividend yield.'
+    print('Test of Put-Option - european style with continuous dividend yield.')
     S = 100.0
     K = 100.0
     r = 0.1
@@ -53,6 +53,6 @@ if __name__=="__main__":
     time = 1.0
     q = 0.05
     value = option_price_european_put_payout(S, K, r, q, sigma, time)
-    print 'The value of a european call option with a continuous dividend yield of %6.2f should be %6.6f.' % (q, value)
-    print 'Derivagem gives %6.6f.' % 0.0
+    print('The value of a european call option with a continuous dividend yield of %6.2f should be %6.6f.' % (q, value))
+    print('Derivagem gives %6.6f.' % 0.0)
 

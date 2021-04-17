@@ -65,6 +65,6 @@ class ACf:
         self.rate = rate
         pass
 
-class FixedAmount(ACf):
-    """ Fixed Amount PRIME """
-    def __init__(self, 
+# class FixedAmount(ACf):
+#     """ Fixed Amount PRIME """
+#     def __init__(self, 
