@@ -254,7 +254,7 @@ Banca del Gottardo, Viale S. Franscini 8, CH-6901 Lugano, Tel., +41 91 808 11 70
     pass
 
 
-DATSTZ = Datum(2006,02,28)
+DATSTZ = Datum(2006,0o2,28)
 conn = dblib.Connection('SDBDEVLU006102',db='SFA')
 cu = conn.cursor       #create the cursor
 filename = 'Structured Products Performance as of %s.pdf' % str(DATSTZ)
@@ -287,7 +287,7 @@ height = StructuredPerformance_ReportHeader_DearInvestor(c, comment)
 sqlstring = "SELECT NUMVAL, TXTBRV, CONVERT(nvarchar(30),DATSCA,4) AS DATSCA, CODDIV_PPL, CRSULT_DVP, Rendimento*100 FROM SFA.dbo.tblPerformanceStorica WHERE DATSTZ = '%s' AND Emittente in ('IGDS','IGFE') ORDER BY Rendimento DESC;" % DATSTZ.SQLDate()
 lst = cu.execute(sqlstring)
 tabella = cu.fetchall()
-print 'Executing production of %s with %d records' % (filename, cu.rowcount)
+print('Executing production of %s with %d records' % (filename, cu.rowcount))
 height = StructuredPerformance_tabella(c, 'Fixed Income-, Forex-linked Products',tabella,height-0.5*cm)
 height -= 1.0*cm
 if height< 5.0*cm:
@@ -301,7 +301,7 @@ if height< 5.0*cm:
 sqlstring = "SELECT NUMVAL, TXTBRV, CONVERT(nvarchar(30),DATSCA,4) AS DATSCA, CODDIV_PPL, CRSULT_DVP, Rendimento*100 FROM SFA.dbo.tblPerformanceStorica WHERE DATSTZ = '%s' AND Emittente in ('INDC') ORDER BY Rendimento DESC;" % DATSTZ.SQLDate()
 lst = cu.execute(sqlstring)
 tabella = cu.fetchall()
-print 'Executing production of %s with %d records' % (filename, cu.rowcount)
+print('Executing production of %s with %d records' % (filename, cu.rowcount))
 height = StructuredPerformance_tabella(c, 'Alternative Products',tabella,height)
 height -= 1.0*cm
 if height< 5.0*cm:
@@ -315,7 +315,7 @@ if height< 5.0*cm:
 sqlstring = "SELECT NUMVAL, TXTBRV, CONVERT(nvarchar(30),DATSCA,4) AS DATSCA, CODDIV_PPL, CRSULT_DVP, Rendimento*100 FROM SFA.dbo.tblPerformanceStorica WHERE DATSTZ = '%s' AND Emittente in ('IETR','IEQU') ORDER BY Rendimento DESC;" % DATSTZ.SQLDate()
 lst = cu.execute(sqlstring)
 tabella = cu.fetchall()
-print 'Executing production of %s with %d records' % (filename, cu.rowcount)
+print('Executing production of %s with %d records' % (filename, cu.rowcount))
 height = StructuredPerformance_tabella(c, 'Equity-linked Products',tabella,height)
 height -= 1.0*cm
 if height< 5.0*cm:

@@ -95,7 +95,7 @@ class FloatingRate(ACf):
         self.spread = spread
         self.factor = factor
         self.offset = offset
-        self.resets = Resets('single'
+        self.resets = 0 # to do: Resets('single'
         pass
 
     def projected_cf(self):
@@ -118,16 +118,16 @@ class FloatingRate(ACf):
                       self.leg.rollfreq, self.leg.maturity, self.leg.coupon/100.0,self.leg.non_verse)
 
 
-Floating Rate
-type
-nominal
-start_day
-end_day
-days
-pay_day
-rate
-offset
-factor
-spread
+# Floating Rate
+# type
+# nominal
+# start_day
+# end_day
+# days
+# pay_day
+# rate
+# offset
+# factor
+# spread
 
         

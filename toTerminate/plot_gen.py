@@ -455,7 +455,7 @@ if __name__=='__main__':
     rows = []
     for row in rawrows:
         rownew = string.split(string.rstrip(row,'\n'),';')
-        rows.append(([rownew[0],rownew[6]))
+        rows.append( ([rownew[0], rownew[6] ) )
     del rawrows
     xx = []
     yy = []

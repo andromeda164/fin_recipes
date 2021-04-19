@@ -32,8 +32,8 @@ class market_data:
         % (self.__base_curr.ISOCode()+'/'+self.__counter_curr.ISOCode(), self.__basis)
 
 if __name__=="__main__":
-    print 'Test for class fx_pair'
-    print '----------------------'
+    print('Test for class fx_pair')
+    print('----------------------')
     CHF = currency.currency('CHF', 'Swiss Franc', calendars.CHF(), 2, 5)
     EUR = currency.currency('EUR', 'Euro', calendars.TARGET(), 2, 1)
     USD = currency.currency('USD', 'US Dollar', calendars.USD(), 2, 1)
@@ -42,8 +42,8 @@ if __name__=="__main__":
     EURCHF = fx_pair(EUR, CHF, 1)
     USDCHF = fx_pair(USD, CHF, 1)
     CHFJPY = fx_pair(CHF, JPY, 100)
-    print EURCHF
-    print USDCHF
-    print CHFJPY
-    print 'OK'
+    print(EURCHF)
+    print(USDCHF)
+    print(CHFJPY)
+    print('OK')
 

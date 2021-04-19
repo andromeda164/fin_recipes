@@ -75,9 +75,9 @@ def binomial_tree_optimized(S0, u, d, no_steps):
 if __name__=="__main__":
     from gen_tree_pdf import *
     from reportlab.pdfgen import *
-    print 'Test for function binomial_tree.'
-    print 'This test prints 2 pdf files in the current directory:'
-    print 'binomial_tree.pdf and binomial_tree_optimized.pdf'
+    print('Test for function binomial_tree.')
+    print('This test prints 2 pdf files in the current directory:')
+    print('binomial_tree.pdf and binomial_tree_optimized.pdf')
     no_steps = 10
     u = 1.05
     d = 1.0 / u
