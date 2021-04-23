@@ -26,3 +26,8 @@ obsolete/
 #toTerminate/
 #toDo/
 
+#Visual studio cache files
+
+.vs/
+.vscode/
+
