@@ -31,3 +31,7 @@ obsolete/
 .vs/
 .vscode/
 
+# Python virtual environment
+env/
+Python/env/
+
