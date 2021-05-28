@@ -12,7 +12,7 @@ import pandas as pd
 @pytest.fixture(autouse=True)
 def load_sample_data():
     df = pd.read_excel(
-        r".\test_termstru_discfact_cubic_spline.xlsx",
+        r".\datasets\test_termstru_discfact_cubic_spline.xlsx",
         usecols=[
             "x",
             "y"

@@ -1,8 +1,9 @@
 # ignore rules
 
 # Excel files
-*.xlsx
-*.xls
+# test files shall be uploaded
+# *.xlsx
+# *.xls
 
 # C++ files (original library)
 *.cc
