@@ -25,7 +25,7 @@ max_errors = 10     # number errors before stopping
 
 # manual identification of single modules
 if test_single_module:
-    argument_list = [r'test_currency_amount.py']
+    argument_list = [r'test_termstru_discfact_cubic_spline.py']
 else:
     argument_list = []
 
