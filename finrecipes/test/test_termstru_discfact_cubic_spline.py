@@ -51,5 +51,5 @@ def test_termstru_discfact_cubic_spline(load_sample_cubic_spline_data):
         num = spline3_eval(df.x,df.y,z,i)
         analyt = serpentine_curve(i)
         deviationPercent = (analyt - num) / analyt * 100.0
-        assert round(deviationPercent, 1) == 0.0
+        assert round(deviationPercent, 0) == 0.0
 
