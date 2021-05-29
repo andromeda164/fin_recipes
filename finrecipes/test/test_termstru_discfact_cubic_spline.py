@@ -16,7 +16,17 @@
     literature-ref  --
 *******************************************************"""
 import pytest
+import pandas as pd
 from finrecipes.termstru_discfact_cubic_spline import *
+
+@pytest.fixture(autouse=True)
+def load_sample_data():
+    df = pd.read_excel(
+        "test_termstru_discfact_cubic_spline.xlsx",
+        usecols=["x","y"],
+        )
+    return df
+
 
 def test_termstru_discfact_cubic_spline():
     
