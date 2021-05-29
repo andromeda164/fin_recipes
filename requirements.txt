@@ -3,6 +3,7 @@ numpy
 reportlab
 pandas
 requests
+openpyxl
 xlrd
 
 
