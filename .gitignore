@@ -1,8 +1,8 @@
 # ignore rules
 
 # Excel files
-*.xlsx
-*.xls
+# *.xlsx
+# *.xls
 
 # C++ files (original library)
 *.cc
