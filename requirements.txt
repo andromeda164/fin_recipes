@@ -1,6 +1,11 @@
 ###### Requirements without Version Specifiers ######`
 numpy
 reportlab
+pandas
+requests
+openpyxl
+# xlrd only for .xls
+
 
 
 ###### Requirements with Version Specifiers ######`

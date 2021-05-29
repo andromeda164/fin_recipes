@@ -1,7 +1,9 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\.github\\workflows",
+    "\\finrecipes",
+    "\\finrecipes\\test"
   ],
-  "SelectedNode": "\\requirements.txt",
   "PreviewInSolutionExplorer": false
 }

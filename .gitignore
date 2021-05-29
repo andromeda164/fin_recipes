@@ -1,8 +1,7 @@
 # ignore rules
 
 # Excel files
-# *.xlsx
-# *.xls
+# important for datasets
 
 # C++ files (original library)
 *.cc
@@ -23,8 +22,7 @@
 
 # to do, to terminate, obsolete
 obsolete/
-#toTerminate/
-#toDo/
+
 
 #Visual studio cache files
 
