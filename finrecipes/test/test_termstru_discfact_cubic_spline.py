@@ -42,7 +42,7 @@ def test_termstru_discfact_cubic_spline(load_sample_cubic_spline_data):
     #     -0.8,-0.550458715596,-0.19801980198,0.19801980198,0.550458715596,0.8, \
     #     0.939597315436,0.994475138122,0.995475113122,0.966542750929,0.923076923077, \
     #     0.874035989717,0.824295010846,0.776340110906,0.731319554849,0.689655172414]
-    df = load_sample_cubic_spline_data()
+    df = load_sample_cubic_spline_data
     n = len(df.x) - 1
     
     z = spline3_coef(df.x,df.y)
