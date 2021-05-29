@@ -33,7 +33,7 @@ def test_termstru_discfact_cubic_spline(load_sample_cubic_spline_data):
 
     def serpentine_curve(x):
         return x/(0.25 + x*x)
-    #df = load_sample_data()
+
     #x = [-1.25,-1.15,-1.05,-0.95,-0.85,-0.75,-0.65,-0.55,-0.45,-0.35,-0.25,
     #     -0.15,-0.05,0.05,0.15,0.25,0.35,0.45,0.55,0.65,0.75,0.85,0.95,1.05,1.15,1.25]
     
@@ -51,6 +51,5 @@ def test_termstru_discfact_cubic_spline(load_sample_cubic_spline_data):
         num = spline3_eval(df.x,df.y,z,i)
         analyt = serpentine_curve(i)
         deviationPercent = (analyt - num) / analyt * 100.0
-        assert round(deviationPercent, 0) == 0.0
-        #print('x = %1.2f,\twith cubic splines: %1.6f,\tanalytic: %1.6f' \
-        #      % (i, spline3_eval(t,y,z,i), serpentine_curve(i)))
+        assert round(deviationPercent, 1) == 0.0
+
