@@ -2,8 +2,7 @@
 
 # Excel files
 # test files shall be uploaded
-*.xlsx
-*.xls
+
 
 # C++ files (original library)
 *.cc
@@ -31,6 +30,8 @@ obsolete/
 
 .vs/
 .vscode/
+.pytest_cache/
+__pycache__/
 
 # Python virtual environment
 env/
