@@ -15,13 +15,4 @@ import pandas as pd
     #  "tests.unit.fixtures.some_stuff",
 #]
 
-@pytest.fixture(autouse=True)
-def load_sample_data():
-    df = pd.read_excel(
-        r"/finrecipes/test/datasets/test_termstru_discfact_cubic_spline.xlsx",
-        usecols=[
-            "x",
-            "y"
-        ],
-    )
 
