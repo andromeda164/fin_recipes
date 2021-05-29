@@ -2,6 +2,7 @@
 numpy
 reportlab
 pandas
+requests
 
 
 
