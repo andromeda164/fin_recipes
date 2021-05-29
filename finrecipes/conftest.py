@@ -9,11 +9,11 @@ import pandas as pd
 #          raise RuntimeError("Network access not allowed during testing!")
 #      monkeypatch.setattr(requests, "get", lambda *args, **kwargs: stunted_get())
 
-
-pytest_plugins = [
+# this is not supported at the root level, only below
+#pytest_plugins = [
     # add here any fixture plugin
     #  "tests.unit.fixtures.some_stuff",
-]
+#]
 
 @pytest.fixture(autouse=True)
 def load_sample_data():
