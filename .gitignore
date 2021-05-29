@@ -2,8 +2,8 @@
 
 # Excel files
 # test files shall be uploaded
-# *.xlsx
-# *.xls
+*.xlsx
+*.xls
 
 # C++ files (original library)
 *.cc
