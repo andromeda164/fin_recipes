@@ -16,12 +16,12 @@ import pandas as pd
 #]
 
 
+
 @pytest.fixture(autouse=True, scope="session")
-def load_sample_data():
-    df = pd.read_excel(
+def load_sample_cubic_spline_data():
+    df_cubic_spline = pd.read_excel(
         r"/finrecipes/test/test_termstru_discfact_cubic_spline.xlsx",
         usecols=["x","y"],
         )
-    #return df
+    return df_cubic_spline
 
-df = load_sample_data()
