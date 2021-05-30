@@ -2,6 +2,8 @@
 
 # Excel files
 # important for datasets
+# test files shall be uploaded
+
 
 # C++ files (original library)
 *.cc
@@ -28,6 +30,9 @@ obsolete/
 
 .vs/
 .vscode/
+.pytest_cache/
+__pycache__/
+*.suo
 
 # Python virtual environment
 env/
