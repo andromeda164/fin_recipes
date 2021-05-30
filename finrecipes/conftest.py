@@ -24,4 +24,3 @@ def load_sample_cubic_spline_data():
         usecols=["x","y"],
         )
     return df_cubic_spline
-

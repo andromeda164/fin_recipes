@@ -1,6 +1,7 @@
 # ignore rules
 
 # Excel files
+# important for datasets
 # test files shall be uploaded
 
 
@@ -23,8 +24,7 @@
 
 # to do, to terminate, obsolete
 obsolete/
-#toTerminate/
-#toDo/
+
 
 #Visual studio cache files
 
@@ -32,6 +32,7 @@ obsolete/
 .vscode/
 .pytest_cache/
 __pycache__/
+*.suo
 
 # Python virtual environment
 env/
