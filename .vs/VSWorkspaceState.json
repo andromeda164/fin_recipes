@@ -1,9 +1,9 @@
 {
   "ExpandedNodes": [
     "",
-    "\\.github\\workflows",
     "\\finrecipes",
     "\\finrecipes\\test"
   ],
+  "SelectedNode": "\\finrecipes\\cflow_irr.py",
   "PreviewInSolutionExplorer": false
 }
