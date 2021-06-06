@@ -28,5 +28,6 @@ from finrecipes.anal_price_am_call_div import *
 def test_option_price_american_call_one_dividend(S,K,r,sigma,tau,D1,tau1, expected):
     # The Roll-Geske-Whaley-Formula result for an example option should be 10.0166
     # Derivagem calculates 10.0088
-    assert option_price_american_call_one_dividend(S,K,r,sigma,tau,D1,tau1) == expected
+    assert round(option_price_american_call_one_dividend(S,K,r,sigma,tau,D1,tau1) - expected, 5)
+
 
