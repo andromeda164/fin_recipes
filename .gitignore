@@ -33,6 +33,8 @@ obsolete/
 .pytest_cache/
 __pycache__/
 *.suo
+*.sqlite
+*.json
 
 # Python virtual environment
 env/
